@@ -5,6 +5,7 @@ import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.com
 
 @NgModule({
   declarations: [ThemeToggleComponent],
-  imports: [CommonModule, SharedModule]
+  imports: [CommonModule, SharedModule],
+  exports: [ThemeToggleComponent]
 })
 export class ThemeModule {}
