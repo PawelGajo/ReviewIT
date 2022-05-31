@@ -1,6 +1,7 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
+@import '~@angular/material/theming';
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -108,7 +109,7 @@ $warn: (
 );
 
 // light theme
-$light-light-primary: mat.define-palette($light-primary);
+$light-primary: mat.define-palette($light-primary);
 $light-accent: mat.define-palette($light-accent);
 $light-warn: mat.define-palette($warn);
 
@@ -137,9 +138,35 @@ $dark-theme: mat.define-dark-theme(
 
 .theme-dark {
   @include mat.all-component-themes($dark-theme);
+  $primary-color: mat-color($dark-primary);
+  $accent-color: mat-color($dark-accent);
+  $warn-color: mat-color($warn);
+  $fg_palette: map-get($dark-theme, foreground);
+  $bg_palette: map-get($dark-theme, background);
+  $fg: map-get($fg_palette, text);
+  $bg: map-get($bg_palette, background);
+
+  --primary: #{$primary-color};
+  --accent: #{$accent-color};
+  --warn: #{$warn-color};
+  --fg: #{$fg};
+  --bg: #{$bg};
 }
 .theme-light {
   @include mat.all-component-themes($light-theme);
+  $primary-color: mat-color($light-primary);
+  $accent-color: mat-color($light-accent);
+  $warn-color: mat-color($warn);
+  $fg_palette: map-get($light-theme, foreground);
+  $bg_palette: map-get($light-theme, background);
+  $fg: map-get($fg_palette, text);
+  $bg: map-get($bg_palette, background);
+
+  --primary: #{$primary-color};
+  --accent: #{$accent-color};
+  --warn: #{$warn-color};
+  --fg: #{$fg};
+  --bg: #{$bg};
 }
 
 html,
