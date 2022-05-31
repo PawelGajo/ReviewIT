@@ -21,7 +21,7 @@ import { Component } from '@angular/core';
       .logo-wrapper a {
         text-decoration: none;
       }
-      .logo__img {
+      .logo-img {
         width: 150px;
       }
       .logo {
