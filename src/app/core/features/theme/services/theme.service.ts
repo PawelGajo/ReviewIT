@@ -8,6 +8,7 @@ type ThemeType = 'theme-dark' | 'theme-light';
 })
 export class ThemeService {
   private DEFAULT_THEME: ThemeType = 'theme-light';
+  currentTheme: ThemeType;
   renderer: Renderer2;
 
   constructor(
@@ -18,20 +19,23 @@ export class ThemeService {
   }
 
   initTheme() {
-    const theme = this.getColorTheme();
-    this.renderer.setAttribute(this.document.body, 'class', theme);
+    this.currentTheme = this.getColorTheme();
+    this.renderer.setAttribute(this.document.body, 'class', this.currentTheme);
   }
 
   update(theme: ThemeType) {
+    this.currentTheme = theme;
     localStorage.setItem('user-theme', theme);
     this.renderer.setAttribute(this.document.body, 'class', theme);
   }
 
   isDarkMode(): boolean {
-    return this.getColorTheme() === 'theme-dark';
+    this.currentTheme = this.getColorTheme();
+    return this.currentTheme === 'theme-dark';
   }
 
   private getColorTheme(): ThemeType {
+    if (this.currentTheme) return this.currentTheme;
     const localStorageTheme = localStorage.getItem('user-theme');
     if (
       localStorageTheme === 'theme-light' ||

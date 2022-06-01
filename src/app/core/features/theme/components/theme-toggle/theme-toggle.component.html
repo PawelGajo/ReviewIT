@@ -1,3 +1,4 @@
-<mat-slide-toggle [(ngModel)]="isDarkMode" (change)="changeTheme()"
-  >Slide me!</mat-slide-toggle
->
+<mat-slide-toggle [(ngModel)]="isDarkMode" (change)="changeTheme()">
+  <span *ngIf="isDarkMode" class="material-icons"> dark_mode </span>
+  <span *ngIf="!isDarkMode" class="material-icons"> light_mode </span>
+</mat-slide-toggle>

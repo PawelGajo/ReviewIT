@@ -1,0 +1,22 @@
+<div class="user-info-wrapper">
+  <ng-container *ngIf="loggedUser">
+    <div class="user-avatar-wrapper">
+      <img
+        class="user-avatar"
+        [src]="loggedUser.avatar_link"
+        alt="user avatar"
+      />
+    </div>
+    <div class="user-details">
+      <div class="user-name">{{ loggedUser.username }}</div>
+      <div class="user-reputation">Reputation: {{ loggedUser.reputation }}</div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!loggedUser">
+    <div class="not-logged-user">
+      <button class="login-button" mat-raised-button color="primary">
+        Login
+      </button>
+    </div>
+  </ng-container>
+</div>
