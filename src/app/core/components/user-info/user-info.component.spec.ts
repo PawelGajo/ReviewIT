@@ -62,6 +62,6 @@ describe('UserInfoComponent', () => {
 
     const loginButtonEl = fixture.debugElement.query(By.css('.login-button'));
     expect(loginButtonEl).toBeTruthy();
-    expect(loginButtonEl.nativeElement.textContent.trim()).toBe('Zaloguj się');
+    expect(loginButtonEl.nativeElement.textContent.trim()).toBe('Login');
   });
 });
