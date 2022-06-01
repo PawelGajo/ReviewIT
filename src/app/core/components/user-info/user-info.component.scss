@@ -1,0 +1,26 @@
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+.user-info-wrapper {
+  margin: 5px;
+  display: flex;
+  align-items: center;
+}
+.user-reputation {
+  margin-left: 2px;
+  font-size: 12px;
+}
+.user-details {
+  margin-left: 5px;
+}
+.not-logged-user {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.login-button {
+  width: 80%;
+}

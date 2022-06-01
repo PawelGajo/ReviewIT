@@ -7,6 +7,7 @@ import { HomeNavigationComponent } from './layout/home-navigation/home-navigatio
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { ThemeModule } from './features/theme/theme.module';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ThemeModule } from './features/theme/theme.module';
     HomeLeftbarComponent,
     HomeLogoComponent,
     HomeNavigationComponent,
-    HomeMainContentComponent
+    HomeMainContentComponent,
+    UserInfoComponent
   ],
   imports: [CommonModule, SharedModule, ThemeModule],
   exports: [HomeNavigationComponent]
