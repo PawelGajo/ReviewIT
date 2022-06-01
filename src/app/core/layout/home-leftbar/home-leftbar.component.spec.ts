@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { HomeLeftbarComponent } from './home-leftbar.component';
 
@@ -20,5 +21,10 @@ describe('HomeLeftbarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('has app-user-info component', () => {
+    const userInfoEl = fixture.debugElement.query(By.css('app-user-info'));
+    expect(userInfoEl).toBeTruthy();
   });
 });
