@@ -20,9 +20,9 @@ export type PostActivity = {
   author: User;
 };
 
-export interface PostCategory {
+export type PostCategory = {
   id: number;
   rank: number;
   name: string;
   number_of_answers: number;
-}
+};
