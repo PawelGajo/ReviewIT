@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PostListItemComponent } from './post-list-item.component';
+import { findComponent } from 'src/app/shared/test-utils/helpers';
 
 describe('PostListItemComponent', () => {
   let component: PostListItemComponent;
@@ -20,5 +20,11 @@ describe('PostListItemComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have app-tag-list component', () => {
+    const el = findComponent(fixture, 'app-tag-list');
+    expect(el).toBeTruthy();
+    expect(el.attributes['tags']).toBeTruthy();
   });
 });
