@@ -10,7 +10,7 @@ import { PostListComponent } from './components/post-list/post-list.component';
 import { PostModule } from './features/post/post.module';
 import { SharedModule } from '../shared/shared.module';
 import { ThemeModule } from './features/theme/theme.module';
-import { UserInfoComponent } from './components/user-info/user-info.component';
+import { UserModule } from './features/user/user.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,6 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     HomeLogoComponent,
     HomeNavigationComponent,
     HomeMainContentComponent,
-    UserInfoComponent,
     PostListComponent
   ],
   imports: [
@@ -27,7 +26,8 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     SharedModule,
     ThemeModule,
     CoreRoutingModule,
-    PostModule
+    PostModule,
+    UserModule
   ],
   exports: [HomeNavigationComponent]
 })
