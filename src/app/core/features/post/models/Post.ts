@@ -15,14 +15,14 @@ export type PostListItem = {
 };
 
 export type PostActivity = {
-  type: string;
+  type: ActivityType;
   created: string;
   author: User;
 };
 
+export type ActivityType = 'created' | 'answered' | 'modified';
+
 export type PostCategory = {
   id: number;
-  rank: number;
   name: string;
-  number_of_answers: number;
 };
