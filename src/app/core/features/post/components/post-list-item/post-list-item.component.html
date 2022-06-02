@@ -24,18 +24,7 @@
   </div>
   <div class="post-bottom-row">
     <app-tag-list [tags]="post.categories"></app-tag-list>
-    <div class="last-user-activity">
-      <span class="username mat-small"
-        >{{ post.last_activity.author.username }}
-      </span>
-      <span class="user-reputation mat-small"
-        >({{ post.last_activity.author.reputation }})</span
-      >
-      <span class="activity-type mat-small">{{ post.last_activity.type }}</span>
-      <div class="activity-time mat-small">
-        {{ post.last_activity.created }}
-      </div>
-    </div>
+    <app-last-activity [activity]="post.last_activity"></app-last-activity>
   </div>
 </div>
 <div class="no-data">
