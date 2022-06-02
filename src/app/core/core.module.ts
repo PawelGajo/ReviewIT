@@ -11,8 +11,6 @@ import { PostModule } from './features/post/post.module';
 import { SharedModule } from '../shared/shared.module';
 import { ThemeModule } from './features/theme/theme.module';
 import { UserInfoComponent } from './components/user-info/user-info.component';
-import { TagListComponent } from '../post/components/tag-list/tag-list.component';
-import { TagComponent } from '../post/components/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +20,7 @@ import { TagComponent } from '../post/components/tag/tag.component';
     HomeNavigationComponent,
     HomeMainContentComponent,
     UserInfoComponent,
-    PostListComponent,
-    TagListComponent,
-    TagComponent
+    PostListComponent
   ],
   imports: [
     CommonModule,
