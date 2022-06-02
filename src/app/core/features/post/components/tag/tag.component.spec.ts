@@ -15,6 +15,10 @@ describe('TagComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TagComponent);
     component = fixture.componentInstance;
+    component.tag = {
+      id: 1,
+      name: 'test tag'
+    };
     fixture.detectChanges();
   });
 
@@ -23,11 +27,6 @@ describe('TagComponent', () => {
   });
 
   it('should display input tag name', () => {
-    component.tag = {
-      id: 1,
-      name: 'test tag'
-    };
-    fixture.detectChanges();
-    expectText(fixture, 'post-tag', 'test-tag');
+    expectText(fixture, 'post-tag', 'test tag');
   });
 });
