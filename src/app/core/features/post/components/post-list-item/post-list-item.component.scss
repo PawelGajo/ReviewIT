@@ -1,0 +1,64 @@
+.post {
+  position: relative;
+  margin: 2px;
+  padding: 5px;
+  min-height: 120px;
+}
+.post-stats {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+.post-rank {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.rank-icon {
+  // margin-bottom: 1px;
+  font-size: 12px;
+  color: #f7ab1b;
+}
+.post-title {
+  color: var(--primary);
+}
+.last-user-activity {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0;
+  flex-wrap: wrap;
+  margin-left: auto;
+  justify-content: flex-end;
+}
+.post-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  line-height: 18px;
+  float: left;
+}
+.post-bottom-row {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.post-category {
+  padding: 2px 4px;
+  border-radius: 2px;
+  background-color: var(--accent2-bg);
+}
+.post-answers {
+  padding: 2px 5px;
+  border: 1px solid var(--accent3);
+  border-radius: 3px;
+}
+.username {
+  color: var(--accent);
+}
+.user-reputation {
+  color: var(--primary);
+}

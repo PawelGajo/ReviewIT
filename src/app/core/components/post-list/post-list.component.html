@@ -1,1 +1,6 @@
-<p>post-list works!</p>
+<div class="posts-wrapper">
+  <ng-container *ngFor="let post of posts">
+    <mat-divider></mat-divider>
+    <app-post-list-item [post]="post"></app-post-list-item>
+  </ng-container>
+</div>

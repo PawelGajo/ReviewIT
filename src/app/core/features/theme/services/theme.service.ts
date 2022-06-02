@@ -20,13 +20,18 @@ export class ThemeService {
 
   initTheme() {
     this.currentTheme = this.getColorTheme();
-    this.renderer.setAttribute(this.document.body, 'class', this.currentTheme);
+    this.update(this.currentTheme);
   }
 
   update(theme: ThemeType) {
     this.currentTheme = theme;
     localStorage.setItem('user-theme', theme);
-    this.renderer.setAttribute(this.document.body, 'class', theme);
+    this.renderer.addClass(this.document.body, this.currentTheme);
+    if (this.currentTheme === 'theme-dark') {
+      this.renderer.removeClass(this.document.body, 'theme-light');
+    } else {
+      this.renderer.removeClass(this.document.body, 'theme-dark');
+    }
   }
 
   isDarkMode(): boolean {

@@ -7,9 +7,10 @@ import { HomeMainContentComponent } from './layout/home-main-content/home-main-c
 import { HomeNavigationComponent } from './layout/home-navigation/home-navigation.component';
 import { NgModule } from '@angular/core';
 import { PostListComponent } from './components/post-list/post-list.component';
+import { PostModule } from './features/post/post.module';
 import { SharedModule } from '../shared/shared.module';
 import { ThemeModule } from './features/theme/theme.module';
-import { UserInfoComponent } from './components/user-info/user-info.component';
+import { UserModule } from './features/user/user.module';
 
 @NgModule({
   declarations: [
@@ -18,10 +19,16 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     HomeLogoComponent,
     HomeNavigationComponent,
     HomeMainContentComponent,
-    UserInfoComponent,
     PostListComponent
   ],
-  imports: [CommonModule, SharedModule, ThemeModule, CoreRoutingModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    ThemeModule,
+    CoreRoutingModule,
+    PostModule,
+    UserModule
+  ],
   exports: [HomeNavigationComponent]
 })
 export class CoreModule {}

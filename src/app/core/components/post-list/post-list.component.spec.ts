@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { By } from '@angular/platform-browser';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { PostListComponent } from './post-list.component';
+import { posts } from '../../features/post/models/mock-post-list';
 
 describe('PostListComponent', () => {
   let component: PostListComponent;
@@ -8,7 +10,8 @@ describe('PostListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PostListComponent]
+      declarations: [PostListComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   });
 
@@ -20,5 +23,12 @@ describe('PostListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have list of posts same as posts.lenght', () => {
+    component.posts = [...posts, ...posts];
+    fixture.detectChanges();
+    const els = fixture.debugElement.queryAll(By.css('app-post-list-item'));
+    expect(els.length).toBe(posts.length * 2);
   });
 });
