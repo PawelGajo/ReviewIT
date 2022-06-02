@@ -1,10 +1,10 @@
+import { ChangeDetectionStrategy, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   expectText,
   findComponent,
   findEl
 } from 'src/app/shared/test-utils/helpers';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { PostListItemComponent } from './post-list-item.component';
 import { posts } from '../../models/mock-post-list';
 
@@ -16,7 +16,12 @@ describe('PostListItemComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [PostListItemComponent],
       schemas: [NO_ERRORS_SCHEMA]
-    }).compileComponents();
+    })
+      .overrideComponent(PostListItemComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default }
+      })
+      .compileComponents();
+    // bad workaround for onpush problem https://github.com/angular/angular/issues/12313
   });
 
   beforeEach(() => {

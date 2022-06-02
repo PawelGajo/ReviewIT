@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { ChangeDetectionStrategy } from '@angular/core';
 import { TagListComponent } from './tag-list.component';
 import { posts } from '../../models/mock-post-list';
 
@@ -10,7 +11,12 @@ describe('TagListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TagListComponent]
-    }).compileComponents();
+    })
+      .overrideComponent(TagListComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default }
+      })
+      .compileComponents();
+    // bad workaround for onpush problem https://github.com/angular/angular/issues/12313
   });
 
   beforeEach(() => {

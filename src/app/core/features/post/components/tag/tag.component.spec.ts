@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ChangeDetectionStrategy } from '@angular/core';
 import { TagComponent } from './tag.component';
 import { expectText } from 'src/app/shared/test-utils/helpers';
 
@@ -9,7 +10,12 @@ describe('TagComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TagComponent]
-    }).compileComponents();
+    })
+      .overrideComponent(TagComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default }
+      })
+      .compileComponents();
+    // bad workaround for onpush problem https://github.com/angular/angular/issues/12313
   });
 
   beforeEach(() => {
