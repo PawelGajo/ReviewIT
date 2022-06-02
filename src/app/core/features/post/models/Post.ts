@@ -1,3 +1,5 @@
+import { User } from '../../user/models/User';
+
 export type PostListItem = {
   id: number;
   created: string;
@@ -15,7 +17,7 @@ export type PostListItem = {
 export type PostActivity = {
   type: string;
   created: string;
-  author: string;
+  author: User;
 };
 
 export interface PostCategory {
