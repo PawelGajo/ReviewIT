@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 import { LastActivityComponent } from './last-activity.component';
+import { findEl } from 'src/app/shared/test-utils/helpers';
+import { posts } from '../../models/mock-post-list';
 
 describe('LastActivityComponent', () => {
   let component: LastActivityComponent;
@@ -8,9 +11,13 @@ describe('LastActivityComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LastActivityComponent ]
+      declarations: [LastActivityComponent]
     })
-    .compileComponents();
+      .overrideComponent(LastActivityComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default }
+      })
+      .compileComponents();
+    // workaround for onpush problem https://github.com/angular/angular/issues/12313
   });
 
   beforeEach(() => {
@@ -21,5 +28,19 @@ describe('LastActivityComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should display error message if activity input is not provided', () => {
+    const el = findEl(fixture, 'activity-no-data');
+    expect(el.nativeElement.textContent).toContain(
+      'Problem with access to the element.'
+    );
+  });
+
+  it('should NOT display error message if activity input is not provided', () => {
+    component.activity = posts[0].last_activity;
+    fixture.detectChanges();
+    const el = findEl(fixture, 'activity-no-data');
+    expect(el).toBeFalsy();
   });
 });

@@ -8,8 +8,6 @@
     {{ activity.created }}
   </div>
 </div>
-<div *ngIf="!activity" class="no-data">
-  <div data-testid="activity-no-data" class="mat-caption">
-    Problem with access to the element.
-  </div>
+<div *ngIf="!activity" data-testid="activity-no-data" class="mat-caption">
+  Problem with access to the element.
 </div>
