@@ -4,10 +4,16 @@ import { PostListItemComponent } from './components/post-list-item/post-list-ite
 import { TagComponent } from './components/tag/tag.component';
 import { TagListComponent } from './components/tag-list/tag-list.component';
 import { LastActivityComponent } from './components/last-activity/last-activity.component';
+import { UserModule } from '../user/user.module';
 
 @NgModule({
-  declarations: [PostListItemComponent, TagListComponent, TagComponent, LastActivityComponent],
-  imports: [CommonModule],
+  declarations: [
+    PostListItemComponent,
+    TagListComponent,
+    TagComponent,
+    LastActivityComponent
+  ],
+  imports: [CommonModule, UserModule],
   exports: [PostListItemComponent]
 })
 export class PostModule {}

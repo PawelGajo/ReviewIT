@@ -1,0 +1,16 @@
+.username {
+  color: var(--accent);
+}
+.user-reputation {
+  color: var(--primary);
+}
+.user-avatar {
+  width: 16px;
+  height: 16px;
+  margin-bottom: -3px;
+}
+.user-info-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}

@@ -50,6 +50,7 @@ export function expectText<T>(
   text: string
 ): void {
   const element = findEl(fixture, testId);
+  expect(element).toBeTruthy();
   const actualText = element.nativeElement.textContent.trim();
   expect(actualText).toBe(text);
 }

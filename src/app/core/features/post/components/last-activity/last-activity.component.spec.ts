@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChangeDetectionStrategy } from '@angular/core';
 
 import { LastActivityComponent } from './last-activity.component';
-import { findEl } from 'src/app/shared/test-utils/helpers';
+import { findComponent, findEl } from 'src/app/shared/test-utils/helpers';
 import { posts } from '../../models/mock-post-list';
 
 describe('LastActivityComponent', () => {
@@ -42,5 +42,13 @@ describe('LastActivityComponent', () => {
     fixture.detectChanges();
     const el = findEl(fixture, 'activity-no-data');
     expect(el).toBeFalsy();
+  });
+
+  it('should have app-user-info-inline component', () => {
+    component.activity = posts[0].last_activity;
+    fixture.detectChanges();
+    const el = findComponent(fixture, 'app-user-info-inline');
+    expect(el).toBeTruthy();
+    expect(el.properties['user']).toEqual(posts[0].last_activity.author);
   });
 });

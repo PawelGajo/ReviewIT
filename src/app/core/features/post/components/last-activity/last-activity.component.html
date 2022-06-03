@@ -1,8 +1,9 @@
 <div *ngIf="activity" class="last-user-activity">
-  <span class="username mat-small">{{ activity.author.username }} </span>
+  <app-user-info-inline [user]="activity.author"></app-user-info-inline>
+  <!-- <span class="username mat-small">{{ activity.author.username }} </span>
   <span class="user-reputation mat-small"
     >({{ activity.author.reputation }})</span
-  >
+  > -->
   <span class="activity-type mat-small">{{ activity.type }}</span>
   <div class="activity-time mat-small">
     {{ activity.created }}
