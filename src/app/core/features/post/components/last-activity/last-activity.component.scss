@@ -10,9 +10,8 @@
   gap: 3px;
   padding: 0;
   flex-wrap: wrap;
-  margin-left: auto;
   justify-content: flex-end;
 }
 :host {
-  width: 100%;
+  margin-left: auto;
 }
