@@ -21,7 +21,7 @@ describe('PostListItemComponent', () => {
         set: { changeDetection: ChangeDetectionStrategy.Default }
       })
       .compileComponents();
-    // bad workaround for onpush problem https://github.com/angular/angular/issues/12313
+    // workaround for onpush problem https://github.com/angular/angular/issues/12313
   });
 
   beforeEach(() => {
@@ -34,11 +34,18 @@ describe('PostListItemComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display error message is post input is not provided', () => {
+  it('should display error message if post input is not provided', () => {
     const el = findEl(fixture, 'post-no-data');
     expect(el.nativeElement.textContent).toContain(
       'Problem with access to the element.'
     );
+  });
+
+  it('should NOT display error message if post input is not provided', () => {
+    component.post = posts[0];
+    fixture.detectChanges();
+    const el = findEl(fixture, 'post-no-data');
+    expect(el).toBeFalsy();
   });
 
   it('should have app-tag-list component', () => {

@@ -27,8 +27,6 @@
     <app-last-activity [activity]="post.last_activity"></app-last-activity>
   </div>
 </div>
-<div class="no-data">
-  <div data-testid="post-no-data" class="mat-caption">
-    Problem with access to the element.
-  </div>
+<div *ngIf="!post" data-testid="post-no-data" class="mat-caption">
+  Problem with access to the element.
 </div>
