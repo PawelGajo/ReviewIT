@@ -6,7 +6,11 @@
       </span>
       <span class="material-icons rank-icon"> star </span>
     </div>
-    <div class="post-answers mat-small">{{ post.answers }} answers</div>
+    <app-post-list-item-answer
+      [answers]="post.answers"
+      [top_answer]="post.has_top_answer"
+    ></app-post-list-item-answer>
+    <!-- <div class="post-answers mat-small">{{ post.answers }} answers</div> -->
     <div data-testid="post-visits" class="post-views mat-small">
       {{ post.visits }} visits
     </div>

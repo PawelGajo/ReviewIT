@@ -81,4 +81,13 @@ describe('PostListItemComponent', () => {
     expect(el).toBeTruthy();
     expect(el.properties['activity']).toEqual(posts[0].last_activity);
   });
+
+  it('should have post-list-item-answer component', () => {
+    component.post = posts[0];
+    fixture.detectChanges();
+    const el = findComponent(fixture, 'app-post-list-item-answer');
+    expect(el).toBeTruthy();
+    expect(el.properties['answers']).toEqual(posts[0].answers);
+    expect(el.properties['top_answer']).toEqual(posts[0].has_top_answer);
+  });
 });

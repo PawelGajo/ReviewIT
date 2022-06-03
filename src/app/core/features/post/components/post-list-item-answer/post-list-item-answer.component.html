@@ -1,0 +1,9 @@
+<div
+  class="post-answers"
+  [ngClass]="{ 'top-answer': top_answer === true, 'no-answer': answers === 0 }"
+>
+  <span *ngIf="top_answer" class="material-icons top-answer-icon"> done </span>
+  <span data-testid="answers" class="answers-amount mat-small"
+    >{{ answers }} answers</span
+  >
+</div>

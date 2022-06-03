@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ChangeDetectionStrategy } from '@angular/core';
-
-import { LastActivityComponent } from './last-activity.component';
 import { findComponent, findEl } from 'src/app/shared/test-utils/helpers';
+import { ChangeDetectionStrategy } from '@angular/core';
+import { LastActivityComponent } from './last-activity.component';
 import { posts } from '../../models/mock-post-list';
 
 describe('LastActivityComponent', () => {

@@ -1,0 +1,19 @@
+.post-answers {
+  padding: 2px 5px;
+  border: 1px solid var(--accent3);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.top-answer-icon {
+  font-size: 14px;
+  color: var(--fg);
+}
+.top-answer {
+  background-color: var(--accent-green);
+  color: var(--fg);
+}
+.no-answer {
+  border: 1px solid var(--fg);
+}

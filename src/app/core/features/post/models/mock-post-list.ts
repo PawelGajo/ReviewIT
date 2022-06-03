@@ -75,7 +75,7 @@ export const posts: PostListItem[] = [
   },
   {
     id: 3,
-    answers: 1,
+    answers: 0,
     categories: [
       {
         id: 1,
