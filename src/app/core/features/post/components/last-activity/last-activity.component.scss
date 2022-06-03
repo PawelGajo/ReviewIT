@@ -1,0 +1,17 @@
+.username {
+  color: var(--accent);
+}
+.user-reputation {
+  color: var(--primary);
+}
+.last-user-activity {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+:host {
+  margin-left: auto;
+}

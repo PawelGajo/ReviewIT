@@ -1,0 +1,13 @@
+<div *ngIf="activity" class="last-user-activity">
+  <span class="username mat-small">{{ activity.author.username }} </span>
+  <span class="user-reputation mat-small"
+    >({{ activity.author.reputation }})</span
+  >
+  <span class="activity-type mat-small">{{ activity.type }}</span>
+  <div class="activity-time mat-small">
+    {{ activity.created }}
+  </div>
+</div>
+<div *ngIf="!activity" data-testid="activity-no-data" class="mat-caption">
+  Problem with access to the element.
+</div>

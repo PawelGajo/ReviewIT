@@ -21,7 +21,7 @@ describe('PostListItemComponent', () => {
         set: { changeDetection: ChangeDetectionStrategy.Default }
       })
       .compileComponents();
-    // bad workaround for onpush problem https://github.com/angular/angular/issues/12313
+    // workaround for onpush problem https://github.com/angular/angular/issues/12313
   });
 
   beforeEach(() => {
@@ -34,11 +34,18 @@ describe('PostListItemComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display error message is post input is not provided', () => {
+  it('should display error message if post input is not provided', () => {
     const el = findEl(fixture, 'post-no-data');
     expect(el.nativeElement.textContent).toContain(
       'Problem with access to the element.'
     );
+  });
+
+  it('should NOT display error message if post input is not provided', () => {
+    component.post = posts[0];
+    fixture.detectChanges();
+    const el = findEl(fixture, 'post-no-data');
+    expect(el).toBeFalsy();
   });
 
   it('should have app-tag-list component', () => {
@@ -46,7 +53,6 @@ describe('PostListItemComponent', () => {
     fixture.detectChanges();
     const el = findComponent(fixture, 'app-tag-list');
     expect(el).toBeTruthy();
-    console.log(el.properties['tags']);
     expect(el.properties['tags']).toEqual(posts[0].categories);
   });
 
@@ -68,9 +74,11 @@ describe('PostListItemComponent', () => {
     expectText(fixture, 'post-page-url', `Page URL: ${posts[0].page_url}`);
   });
 
-  it('should have correct repo-url', () => {
+  it('should have last-activity component', () => {
     component.post = posts[0];
     fixture.detectChanges();
-    expectText(fixture, 'post-repo-url', `Repo URL: ${posts[0].repo_url}`);
+    const el = findComponent(fixture, 'app-last-activity');
+    expect(el).toBeTruthy();
+    expect(el.properties['activity']).toEqual(posts[0].last_activity);
   });
 });
