@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { PostListComponent } from './post-list.component';
-import { posts } from '../../features/post/models/mock-post-list';
+import { posts } from '../../models/mock-post-list';
 
 describe('PostListComponent', () => {
   let component: PostListComponent;
