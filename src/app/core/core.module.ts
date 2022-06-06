@@ -7,7 +7,6 @@ import { HomeLogoComponent } from './layout/home-logo/home-logo.component';
 import { HomeMainContentComponent } from './layout/home-main-content/home-main-content.component';
 import { HomeNavigationComponent } from './layout/home-navigation/home-navigation.component';
 import { NgModule } from '@angular/core';
-import { PostListComponent } from './features/post/components/post-list/post-list.component';
 import { PostModule } from './features/post/post.module';
 import { SharedModule } from '../shared/shared.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -22,8 +21,7 @@ import { environment } from '../../environments/environment';
     HomeLeftbarComponent,
     HomeLogoComponent,
     HomeNavigationComponent,
-    HomeMainContentComponent,
-    PostListComponent
+    HomeMainContentComponent
   ],
   imports: [
     CommonModule,
