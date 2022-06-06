@@ -1,11 +1,8 @@
+import { ChangeDetectionStrategy, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { By } from '@angular/platform-browser';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { PostListComponent } from './post-list.component';
-import { of } from 'rxjs';
 import { posts } from '../../models/mock-post-list';
-import { selectPostsItems } from '../../state/posts.selector';
 
 describe('PostListComponent', () => {
   let component: PostListComponent;
@@ -14,20 +11,13 @@ describe('PostListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PostListComponent],
-      schemas: [NO_ERRORS_SCHEMA],
-      providers: [
-        provideMockStore({
-          selectors: [
-            {
-              selector: selectPostsItems,
-              value: [...posts]
-            }
-          ]
-        })
-      ]
-    }).compileComponents();
-
-    TestBed.inject(MockStore);
+      schemas: [NO_ERRORS_SCHEMA]
+    })
+      .overrideComponent(PostListComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default }
+      })
+      .compileComponents();
+    // workaround for onpush problem https://github.com/angular/angular/issues/12313
   });
 
   beforeEach(() => {
@@ -41,7 +31,7 @@ describe('PostListComponent', () => {
   });
 
   it('should have list of posts same as posts.lenght', () => {
-    component.posts$ = of(posts);
+    component.posts = posts;
     fixture.detectChanges();
     const els = fixture.debugElement.queryAll(By.css('app-post-list-item'));
     expect(els.length).toBe(posts.length);
