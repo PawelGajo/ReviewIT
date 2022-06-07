@@ -50,8 +50,4 @@ describe('LastActivityComponent', () => {
     expect(el).toBeTruthy();
     expect(el.properties['user']).toEqual(posts[0].last_activity.author);
   });
-
-  it('should fail', () => {
-    fail();
-  });
 });
