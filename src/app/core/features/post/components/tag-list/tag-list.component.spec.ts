@@ -1,6 +1,6 @@
+import { ChangeDetectionStrategy, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ChangeDetectionStrategy } from '@angular/core';
 import { TagListComponent } from './tag-list.component';
 import { posts } from '../../models/mock-post-list';
 
@@ -10,7 +10,8 @@ describe('TagListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TagListComponent]
+      declarations: [TagListComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .overrideComponent(TagListComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default }

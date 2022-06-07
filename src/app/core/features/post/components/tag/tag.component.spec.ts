@@ -1,5 +1,5 @@
+import { ChangeDetectionStrategy, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ChangeDetectionStrategy } from '@angular/core';
 import { TagComponent } from './tag.component';
 import { expectText } from 'src/app/shared/test-utils/helpers';
 
@@ -9,7 +9,8 @@ describe('TagComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TagComponent]
+      declarations: [TagComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .overrideComponent(TagComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default }

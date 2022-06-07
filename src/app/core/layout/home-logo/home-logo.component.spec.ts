@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
 import { HomeLogoComponent } from './home-logo.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('HomeLogoComponent', () => {
   let component: HomeLogoComponent;
@@ -9,7 +9,8 @@ describe('HomeLogoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeLogoComponent]
+      declarations: [HomeLogoComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   });
 

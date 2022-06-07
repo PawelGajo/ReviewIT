@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HomeMainContentComponent } from './home-main-content.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('HomeMainContentComponent', () => {
   let component: HomeMainContentComponent;
@@ -8,7 +8,8 @@ describe('HomeMainContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeMainContentComponent]
+      declarations: [HomeMainContentComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   });
 

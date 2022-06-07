@@ -1,6 +1,6 @@
+import { ChangeDetectionStrategy, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { expectText, findEl } from '../../../../../shared/test-utils/helpers';
-import { ChangeDetectionStrategy } from '@angular/core';
 import { UserInfoInlineComponent } from './user-info-inline.component';
 import { user } from '../../models/mock-user';
 
@@ -10,7 +10,8 @@ describe('UserInfoInlineComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [UserInfoInlineComponent]
+      declarations: [UserInfoInlineComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .overrideComponent(UserInfoInlineComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default }

@@ -1,6 +1,6 @@
+import { ChangeDetectionStrategy, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ChangeDetectionStrategy } from '@angular/core';
 import { PostListItemAnswerComponent } from './post-list-item-answer.component';
 import { expectText } from '../../../../../shared/test-utils/helpers';
 
@@ -10,7 +10,8 @@ describe('PostListItemAnswerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PostListItemAnswerComponent]
+      declarations: [PostListItemAnswerComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .overrideComponent(PostListItemAnswerComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default }

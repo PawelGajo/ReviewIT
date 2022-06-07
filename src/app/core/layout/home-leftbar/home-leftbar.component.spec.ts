@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
 import { HomeLeftbarComponent } from './home-leftbar.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('HomeLeftbarComponent', () => {
   let component: HomeLeftbarComponent;
@@ -9,7 +9,8 @@ describe('HomeLeftbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeLeftbarComponent]
+      declarations: [HomeLeftbarComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   });
 

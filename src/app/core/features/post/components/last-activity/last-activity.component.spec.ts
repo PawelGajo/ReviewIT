@@ -1,6 +1,6 @@
+import { ChangeDetectionStrategy, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { findComponent, findEl } from 'src/app/shared/test-utils/helpers';
-import { ChangeDetectionStrategy } from '@angular/core';
 import { LastActivityComponent } from './last-activity.component';
 import { posts } from '../../models/mock-post-list';
 
@@ -10,7 +10,8 @@ describe('LastActivityComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LastActivityComponent]
+      declarations: [LastActivityComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .overrideComponent(LastActivityComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default }
