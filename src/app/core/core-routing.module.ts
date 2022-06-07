@@ -1,7 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { HomeNavigationComponent } from './layout/home-navigation/home-navigation.component';
 import { NgModule } from '@angular/core';
-import { PostListComponent } from './components/post-list/post-list.component';
 
 const routes: Routes = [
   {
@@ -10,7 +9,8 @@ const routes: Routes = [
     children: [
       {
         path: 'posts',
-        component: PostListComponent
+        loadChildren: () =>
+          import('./features/post/post.module').then((m) => m.PostModule)
       },
       {
         path: '',
