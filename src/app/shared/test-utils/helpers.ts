@@ -1,6 +1,9 @@
 import { By } from '@angular/platform-browser';
 import { ComponentFixture } from '@angular/core/testing';
 import { DebugElement } from '@angular/core';
+import { HarnessLoader } from '@angular/cdk/testing';
+import { MatButtonHarness } from '@angular/material/button/testing';
+import { MatInputHarness } from '@angular/material/input/testing';
 
 export function setFieldValue<T>(
   fixture: ComponentFixture<T>,
@@ -78,4 +81,28 @@ export function dispatchFakeEvent(
   const event = document.createEvent('Event');
   event.initEvent(type, bubbles, false);
   element.dispatchEvent(event);
+}
+
+export async function fillInput(
+  loader: HarnessLoader,
+  predicate: string,
+  value: string
+): Promise<void> {
+  const input = await loader.getHarness(
+    MatInputHarness.with({ selector: `[data-testid="${predicate}"` })
+  );
+  expect(input).toBeTruthy();
+  await input.setValue(value);
+  expect(await input.getValue()).toBe(value);
+}
+
+export async function clickButton(
+  loader: HarnessLoader,
+  predicate: string
+): Promise<void> {
+  const button = await loader.getHarness(
+    MatButtonHarness.with({ selector: `[data-testid="${predicate}"` })
+  );
+  expect(button).toBeTruthy();
+  await button.click();
 }
