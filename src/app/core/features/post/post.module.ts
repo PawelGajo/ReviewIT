@@ -6,6 +6,7 @@ import { PostListItemAnswerComponent } from './components/post-list-item-answer/
 import { PostListItemComponent } from './components/post-list-item/post-list-item.component';
 import { PostRoutingModule } from './post-routing.module';
 import { PostsContainerComponent } from './components/posts-container/posts-container.component';
+import { SearchPostInputComponent } from './components/search-post-input/search-post-input.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { TagComponent } from './components/tag/tag.component';
 import { TagListComponent } from './components/tag-list/tag-list.component';
@@ -19,7 +20,8 @@ import { UserModule } from '../user/user.module';
     LastActivityComponent,
     PostListItemAnswerComponent,
     PostsContainerComponent,
-    PostListComponent
+    PostListComponent,
+    SearchPostInputComponent
   ],
   imports: [CommonModule, UserModule, SharedModule, PostRoutingModule],
   exports: []
