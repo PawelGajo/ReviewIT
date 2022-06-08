@@ -13,4 +13,8 @@ export class PostsContainerComponent {
   posts$: Observable<PostListItem[]> = this.store.select(selectPostsItems);
 
   constructor(private store: Store) {}
+
+  search(term: string) {
+    console.log(term);
+  }
 }

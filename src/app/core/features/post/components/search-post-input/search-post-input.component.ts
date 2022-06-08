@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -8,12 +8,12 @@ import { FormControl } from '@angular/forms';
 })
 export class SearchPostInputComponent {
   searchTerm = new FormControl('');
-  onSearch: EventEmitter<string> = new EventEmitter();
+  @Output() newSearch: EventEmitter<string> = new EventEmitter();
   constructor() {}
 
   search() {
     const searchValue = this.searchTerm.value;
     if (!searchValue) return;
-    this.onSearch.emit(searchValue);
+    this.newSearch.emit(searchValue);
   }
 }
