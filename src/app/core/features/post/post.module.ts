@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { LastActivityComponent } from './components/last-activity/last-activity.component';
 import { NgModule } from '@angular/core';
 import { PostListComponent } from './components/post-list/post-list.component';
@@ -23,7 +24,13 @@ import { UserModule } from '../user/user.module';
     PostListComponent,
     SearchPostInputComponent
   ],
-  imports: [CommonModule, UserModule, SharedModule, PostRoutingModule],
+  imports: [
+    CommonModule,
+    UserModule,
+    SharedModule,
+    PostRoutingModule,
+    HttpClientModule
+  ],
   exports: []
 })
 export class PostModule {}
