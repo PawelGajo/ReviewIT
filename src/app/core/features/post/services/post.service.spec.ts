@@ -1,8 +1,8 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
-import { HttpClient } from '@angular/common/http';
 import { MOCK_POST_LIST_ITEMS } from '../models/mock-post-list';
 import { PostListItem } from '../models/Post';
 import { PostService } from './post.service';
@@ -27,7 +27,7 @@ describe('PostService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should fetch posts', () => {
+  it('should successfuly fetch posts ', () => {
     let fetchedPosts: PostListItem[] | undefined;
     service.getAll().subscribe((posts) => (fetchedPosts = posts));
 
@@ -36,5 +36,26 @@ describe('PostService', () => {
     request.flush(posts);
 
     expect(fetchedPosts).toEqual(posts);
+  });
+
+  it('should throw http Response error after posts fetch', () => {
+    const errorEvent: ProgressEvent = new ProgressEvent('API Error');
+    const status = 500;
+    const statusText = 'Internal Server Error';
+
+    let actualError: HttpErrorResponse | undefined;
+    service.getAll().subscribe({
+      next: () =>
+        fail('Should return error and next handler must not be called'),
+      error: (error) => (actualError = error),
+      complete: () =>
+        fail('Should return error and complete handler must not be called')
+    });
+    const request = httpTestingController.expectOne(`${service.POST_URL}`);
+    request.error(errorEvent, { status, statusText });
+
+    expect(actualError?.error).toBe(errorEvent);
+    expect(actualError?.status).toBe(status);
+    expect(actualError?.statusText).toBe(statusText);
   });
 });
