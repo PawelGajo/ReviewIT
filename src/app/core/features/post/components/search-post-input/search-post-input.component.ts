@@ -15,4 +15,9 @@ export class SearchPostInputComponent {
     const searchValue = this.searchTerm.value.trim();
     this.newSearch.emit(searchValue);
   }
+
+  clearSearchInput() {
+    this.searchTerm.setValue('');
+    this.search();
+  }
 }

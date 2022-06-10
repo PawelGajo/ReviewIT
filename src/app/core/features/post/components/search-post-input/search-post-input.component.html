@@ -10,6 +10,17 @@
       <button mat-icon-button matPrefix data-testid="post-search-button">
         <mat-icon>search</mat-icon>
       </button>
+      <button
+        *ngIf="searchTerm.value"
+        matSuffix
+        mat-icon-button
+        type="button"
+        aria-label="Clear"
+        data-testid="clear-search-input"
+        (click)="clearSearchInput()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-form-field>
   </form>
 </div>

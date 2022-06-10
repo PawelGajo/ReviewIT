@@ -4,8 +4,8 @@ import {
   loadPostsFailure,
   loadPostsSuccess,
   searchPosts,
-  searchPostsSuccess,
-  searchPostsFailure
+  searchPostsFailure,
+  searchPostsSuccess
 } from './posts.actions';
 import { catchError, exhaustMap, map, switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
