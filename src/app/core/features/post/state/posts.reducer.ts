@@ -1,5 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
-import { loadPosts, loadPostsFailure, loadPostsSuccess } from './posts.actions';
+import {
+  loadPosts,
+  loadPostsFailure,
+  loadPostsSuccess,
+  searchPosts,
+  searchPostsFailure,
+  searchPostsSuccess
+} from './posts.actions';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PostListItem } from '../models/Post';
 
@@ -30,6 +37,23 @@ export const postsReducer = createReducer(
   ),
   on(
     loadPostsFailure,
+    (state, { error }): PostsState => ({
+      ...state,
+      loading: false,
+      error: error
+    })
+  ),
+  on(searchPosts, (state): PostsState => ({ ...state, loading: true })),
+  on(
+    searchPostsSuccess,
+    (state, { posts }): PostsState => ({
+      ...state,
+      posts: posts,
+      loading: false
+    })
+  ),
+  on(
+    searchPostsFailure,
     (state, { error }): PostsState => ({
       ...state,
       loading: false,

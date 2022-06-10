@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PostListItem } from '../models/Post';
@@ -14,5 +14,11 @@ export class PostService {
 
   getAll(): Observable<PostListItem[]> {
     return this.http.get<PostListItem[]>(this.POST_URL);
+  }
+
+  search(query: string): Observable<PostListItem[]> {
+    let params = new HttpParams();
+    params = params.append('q', query);
+    return this.http.get<PostListItem[]>(this.POST_URL, { params });
   }
 }

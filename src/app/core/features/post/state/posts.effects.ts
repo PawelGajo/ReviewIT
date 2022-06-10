@@ -2,9 +2,12 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
   PostActions,
   loadPostsFailure,
-  loadPostsSuccess
+  loadPostsSuccess,
+  searchPosts,
+  searchPostsSuccess,
+  searchPostsFailure
 } from './posts.actions';
-import { catchError, exhaustMap, map } from 'rxjs/operators';
+import { catchError, exhaustMap, map, switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { PostService } from '../services/post.service';
 import { of } from 'rxjs';
@@ -18,6 +21,18 @@ export class PostEffects {
         this.postService.getAll().pipe(
           map((posts) => loadPostsSuccess({ posts })),
           catchError((error) => of(loadPostsFailure({ error })))
+        )
+      )
+    );
+  });
+
+  searchPosts$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(searchPosts),
+      switchMap((action) =>
+        this.postService.search(action.query).pipe(
+          map((posts) => searchPostsSuccess({ posts })),
+          catchError((error) => of(searchPostsFailure({ error })))
         )
       )
     );

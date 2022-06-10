@@ -12,8 +12,7 @@ export class SearchPostInputComponent {
   constructor() {}
 
   search() {
-    const searchValue = this.searchTerm.value;
-    if (!searchValue) return;
+    const searchValue = this.searchTerm.value.trim();
     this.newSearch.emit(searchValue);
   }
 }
