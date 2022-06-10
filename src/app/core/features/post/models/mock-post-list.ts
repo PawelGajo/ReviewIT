@@ -1,6 +1,6 @@
 import { PostListItem } from './Post';
 
-export const posts: PostListItem[] = [
+export const MOCK_POST_LIST_ITEMS: PostListItem[] = [
   {
     id: 1,
     answers: 2,
