@@ -2,7 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   clickButton,
-  fillInput
+  fillInput,
+  findEl
 } from '../../../../../shared/test-utils/helpers';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { SearchPostInputComponent } from './search-post-input.component';
@@ -42,14 +43,25 @@ describe('SearchPostInputComponent', () => {
     expect(component.newSearch.emit).toHaveBeenCalledOnceWith('test');
   });
 
-  it('should not emit new search term if it is empty', async () => {
-    spyOn(component.newSearch, 'emit').and.callThrough();
-    spyOn(component, 'search').and.callThrough();
+  it('should show clear button when search input value is not emptu', async () => {
+    await fillInput(loader, 'post-search-input', 'test');
+    const clearEl = findEl(fixture, 'clear-search-input');
+    expect(clearEl).toBeTruthy();
+  });
 
-    await fillInput(loader, 'post-search-input', '');
-    await clickButton(loader, 'post-search-button');
+  it('should emit new empty value when input is cleared', async () => {
+    const clearInputSpy = spyOn(
+      component,
+      'clearSearchInput'
+    ).and.callThrough();
+    const searchSpy = spyOn(component, 'search').and.callThrough();
+    const searchEmmiterSpy = spyOn(component.newSearch, 'emit');
+    const query = 'test';
+    await fillInput(loader, 'post-search-input', query);
+    await clickButton(loader, 'clear-search-input');
 
-    expect(component.search).toHaveBeenCalled();
-    expect(component.newSearch.emit).not.toHaveBeenCalled();
+    expect(clearInputSpy).toHaveBeenCalledTimes(1);
+    expect(searchSpy).toHaveBeenCalledTimes(1);
+    expect(searchEmmiterSpy).toHaveBeenCalledWith('');
   });
 });

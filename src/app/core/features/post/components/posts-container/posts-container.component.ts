@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { loadPosts, searchPosts } from '../../state/posts.actions';
 import { Observable } from 'rxjs';
 import { PostListItem } from '../../models/Post';
 import { Store } from '@ngrx/store';
-import { loadPosts } from '../../state/posts.actions';
 import { selectPostsItems } from '../../state/posts.selector';
 
 @Component({
@@ -18,7 +18,7 @@ export class PostsContainerComponent implements OnInit {
   }
 
   search(term: string) {
-    console.log(term);
+    this.store.dispatch(searchPosts({ query: term }));
   }
 
   ngOnInit(): void {
