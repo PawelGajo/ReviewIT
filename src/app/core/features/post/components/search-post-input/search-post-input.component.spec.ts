@@ -41,15 +41,4 @@ describe('SearchPostInputComponent', () => {
     expect(component.search).toHaveBeenCalled();
     expect(component.newSearch.emit).toHaveBeenCalledOnceWith('test');
   });
-
-  it('should not emit new search term if it is empty', async () => {
-    spyOn(component.newSearch, 'emit').and.callThrough();
-    spyOn(component, 'search').and.callThrough();
-
-    await fillInput(loader, 'post-search-input', '');
-    await clickButton(loader, 'post-search-button');
-
-    expect(component.search).toHaveBeenCalled();
-    expect(component.newSearch.emit).not.toHaveBeenCalled();
-  });
 });
