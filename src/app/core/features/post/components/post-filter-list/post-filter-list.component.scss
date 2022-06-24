@@ -1,0 +1,14 @@
+.filter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 5px;
+}
+.filter-item {
+  padding: 2px 8px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.filter-item.active {
+  background-color: var(--accent);
+}
