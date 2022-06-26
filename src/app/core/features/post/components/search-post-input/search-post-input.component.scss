@@ -1,8 +1,11 @@
 .search-wrapper {
   width: 100%;
-  padding: 10px 5px;
+  padding: 5px 5px 0 5px;
 }
 .search {
   width: 100%;
-  margin-bottom: -25px;
+  // margin-bottom: -25px;
+}
+::ng-deep .search .mat-form-field-wrapper {
+  padding-bottom: 0;
 }

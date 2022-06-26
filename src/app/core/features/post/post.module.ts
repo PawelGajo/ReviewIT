@@ -12,6 +12,7 @@ import { SharedModule } from '../../../shared/shared.module';
 import { TagComponent } from './components/tag/tag.component';
 import { TagListComponent } from './components/tag-list/tag-list.component';
 import { UserModule } from '../user/user.module';
+import { PostFilterListComponent } from './components/post-filter-list/post-filter-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UserModule } from '../user/user.module';
     PostListItemAnswerComponent,
     PostsContainerComponent,
     PostListComponent,
-    SearchPostInputComponent
+    SearchPostInputComponent,
+    PostFilterListComponent
   ],
   imports: [
     CommonModule,

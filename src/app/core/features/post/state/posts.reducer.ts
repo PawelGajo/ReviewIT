@@ -9,6 +9,7 @@ import {
 } from './posts.actions';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PostListItem } from '../models/Post';
+import { PostsFilter } from '../models/Filter';
 
 export const featureName = 'posts';
 
@@ -16,12 +17,16 @@ export interface PostsState {
   posts: PostListItem[];
   loading: boolean;
   error: HttpErrorResponse | undefined;
+  query: string;
+  postsFilter: PostsFilter;
 }
 
 const initialState: PostsState = {
   posts: [],
   loading: false,
-  error: undefined
+  error: undefined,
+  query: '',
+  postsFilter: PostsFilter.LATEST
 };
 
 export const postsReducer = createReducer(
@@ -43,7 +48,15 @@ export const postsReducer = createReducer(
       error: error
     })
   ),
-  on(searchPosts, (state): PostsState => ({ ...state, loading: true })),
+  on(
+    searchPosts,
+    (state, { query, postsFilter }): PostsState => ({
+      ...state,
+      loading: true,
+      query,
+      postsFilter
+    })
+  ),
   on(
     searchPostsSuccess,
     (state, { posts }): PostsState => ({

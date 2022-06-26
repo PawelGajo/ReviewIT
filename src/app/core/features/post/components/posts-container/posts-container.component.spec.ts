@@ -9,6 +9,7 @@ import { MOCK_POST_LIST_ITEMS } from '../../models/mock-post-list';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { PostListItem } from '../../models/Post';
 import { PostsContainerComponent } from './posts-container.component';
+import { findComponent } from '../../../../../shared/test-utils/helpers';
 import { selectPostsItems } from '../../state/posts.selector';
 
 describe('PostsContainerComponent', () => {
@@ -45,6 +46,27 @@ describe('PostsContainerComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should have post-list component', () => {
+    const postListComponent = findComponent(fixture, 'app-post-list');
+    expect(postListComponent).toBeTruthy();
+  });
+
+  it('should have search-post-input component', () => {
+    const searchPostInputComponent = findComponent(
+      fixture,
+      'app-search-post-input'
+    );
+    expect(searchPostInputComponent).toBeTruthy();
+  });
+
+  it('should have post-filter-list component', () => {
+    const postFilterListComponent = findComponent(
+      fixture,
+      'app-post-filter-list'
+    );
+    expect(postFilterListComponent).toBeTruthy();
+  });
+
   it('should get posts from store on init', fakeAsync(() => {
     let fetchedPosts: PostListItem[] | undefined;
     component.posts$.subscribe({
@@ -67,7 +89,7 @@ describe('PostsContainerComponent', () => {
       complete: () => fail('Should be no complete')
     });
     const storeDispatchSpy = spyOn(store, 'dispatch').and.callThrough();
-    component.search('test');
+    component.searchPosts();
     tick();
     expect(storeDispatchSpy).toHaveBeenCalledTimes(1);
     expect(fetchedPosts).toEqual(posts);

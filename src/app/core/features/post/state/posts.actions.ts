@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PostListItem } from '../models/Post';
+import { PostsFilter } from '../models/Filter';
 
 export const enum PostActions {
   LOAD_POSTS_ACTION = '[Post List] Load Posts',
@@ -28,7 +29,7 @@ export const loadPostsFailure = createAction(
 
 export const searchPosts = createAction(
   PostActions.SEARCH_POSTS_ACTION,
-  props<{ query: string }>()
+  props<{ query: string; postsFilter: PostsFilter }>()
 );
 
 export const searchPostsSuccess = createAction(
@@ -38,20 +39,5 @@ export const searchPostsSuccess = createAction(
 
 export const searchPostsFailure = createAction(
   PostActions.SEARCH_POSTS_ACTION_FAILURE,
-  props<{ error: HttpErrorResponse }>()
-);
-
-export const filterPosts = createAction(
-  PostActions.FILTER_POSTS_ACTION,
-  props<{ query: string }>()
-);
-
-export const filterPostsSuccess = createAction(
-  PostActions.FILTER_POSTS_ACTION_SUCCESS,
-  props<{ posts: PostListItem[] }>()
-);
-
-export const filterPostsFailure = createAction(
-  PostActions.FILTER_POSTS_ACTION_FAILURE,
   props<{ error: HttpErrorResponse }>()
 );
