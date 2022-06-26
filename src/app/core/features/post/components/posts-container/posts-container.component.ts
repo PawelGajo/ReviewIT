@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { loadPosts, searchPosts } from '../../state/posts.actions';
 import { Observable } from 'rxjs';
 import { PostListItem } from '../../models/Post';
+import { PostsFilter } from '../../models/Filter';
 import { Store } from '@ngrx/store';
 import { selectPostsItems } from '../../state/posts.selector';
 
@@ -11,14 +12,31 @@ import { selectPostsItems } from '../../state/posts.selector';
   styleUrls: ['./posts-container.component.scss']
 })
 export class PostsContainerComponent implements OnInit {
+  currentSearchQuery = '';
+  currentPostsFilter: PostsFilter = PostsFilter.LATEST;
   posts$: Observable<PostListItem[]>;
 
   constructor(private store: Store) {
     this.posts$ = this.store.select(selectPostsItems);
   }
 
-  search(term: string) {
-    this.store.dispatch(searchPosts({ query: term }));
+  updateSearchQuery(term: string) {
+    this.currentSearchQuery = term;
+    this.searchPosts();
+  }
+
+  updatePostFilters(newPostsFilter: PostsFilter) {
+    this.currentPostsFilter = newPostsFilter;
+    this.searchPosts();
+  }
+
+  searchPosts() {
+    this.store.dispatch(
+      searchPosts({
+        query: this.currentSearchQuery,
+        postsFilter: this.currentPostsFilter
+      })
+    );
   }
 
   ngOnInit(): void {

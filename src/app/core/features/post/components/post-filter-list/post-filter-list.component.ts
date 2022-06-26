@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { PostsFilter } from '../../models/Filter';
 
 @Component({
@@ -8,6 +8,12 @@ import { PostsFilter } from '../../models/Filter';
 })
 export class PostFilterListComponent {
   filters = PostsFilter;
-  selectedFilter: PostsFilter;
+  selectedFilter: PostsFilter = PostsFilter.LATEST;
+  @Output() newFilter: EventEmitter<PostsFilter> = new EventEmitter();
   constructor() {}
+
+  changeFilter(filter: PostsFilter) {
+    this.newFilter.next(filter);
+    this.selectedFilter = filter;
+  }
 }

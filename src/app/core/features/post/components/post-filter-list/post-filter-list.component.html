@@ -1,7 +1,7 @@
 <div class="filter-list">
   <div
     [ngClass]="{ active: selectedFilter === filters.LATEST }"
-    (click)="selectedFilter = filters.LATEST"
+    (click)="changeFilter(filters.LATEST)"
     class="filter-item"
     data-testid="filter-item-latest"
   >
@@ -9,7 +9,7 @@
   </div>
   <div
     [ngClass]="{ active: selectedFilter === filters.HOT }"
-    (click)="selectedFilter = filters.HOT"
+    (click)="changeFilter(filters.HOT)"
     class="filter-item"
     data-testid="filter-item-hot"
   >
@@ -17,7 +17,7 @@
   </div>
   <div
     [ngClass]="{ active: selectedFilter === filters.HIGHEST_RANK }"
-    (click)="selectedFilter = filters.HIGHEST_RANK"
+    (click)="changeFilter(filters.HIGHEST_RANK)"
     class="filter-item"
     data-testid="filter-item-highest-rank"
   >
@@ -25,7 +25,7 @@
   </div>
   <div
     [ngClass]="{ active: selectedFilter === filters.MOST_VISITS }"
-    (click)="selectedFilter = filters.MOST_VISITS"
+    (click)="changeFilter(filters.MOST_VISITS)"
     class="filter-item"
     data-testid="filter-item-most-visits"
   >
@@ -33,7 +33,7 @@
   </div>
   <div
     [ngClass]="{ active: selectedFilter === filters.MOST_ANSWERS }"
-    (click)="selectedFilter = filters.MOST_ANSWERS"
+    (click)="changeFilter(filters.MOST_ANSWERS)"
     class="filter-item"
     data-testid="filter-item-most-answers"
   >
@@ -41,7 +41,7 @@
   </div>
   <div
     [ngClass]="{ active: selectedFilter === filters.NO_ANSWER }"
-    (click)="selectedFilter = filters.NO_ANSWER"
+    (click)="changeFilter(filters.NO_ANSWER)"
     class="filter-item"
     data-testid="filter-item-no-answer"
   >

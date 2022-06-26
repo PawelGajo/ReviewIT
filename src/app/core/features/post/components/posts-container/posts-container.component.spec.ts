@@ -89,7 +89,7 @@ describe('PostsContainerComponent', () => {
       complete: () => fail('Should be no complete')
     });
     const storeDispatchSpy = spyOn(store, 'dispatch').and.callThrough();
-    component.search('test');
+    component.searchPosts();
     tick();
     expect(storeDispatchSpy).toHaveBeenCalledTimes(1);
     expect(fetchedPosts).toEqual(posts);
