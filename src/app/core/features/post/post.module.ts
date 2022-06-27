@@ -13,6 +13,8 @@ import { TagComponent } from './components/tag/tag.component';
 import { TagListComponent } from './components/tag-list/tag-list.component';
 import { UserModule } from '../user/user.module';
 import { PostFilterListComponent } from './components/post-filter-list/post-filter-list.component';
+import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { PostDetailsContainerComponent } from './components/post-details-container/post-details-container.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { PostFilterListComponent } from './components/post-filter-list/post-filt
     PostsContainerComponent,
     PostListComponent,
     SearchPostInputComponent,
-    PostFilterListComponent
+    PostFilterListComponent,
+    PostDetailsComponent,
+    PostDetailsContainerComponent
   ],
   imports: [
     CommonModule,

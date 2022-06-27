@@ -1,0 +1,40 @@
+<div *ngIf="post" class="post-wrapper">
+  <div class="post-haader">
+    <div data-testid="post-title" class="post-title mat-title">
+      {{ post.title }}
+    </div>
+    <div class="post-rank mat-small">
+      <span class="rank-label">
+        Project rank: <span data-testid="post-rank">{{ post.rank }}</span>
+      </span>
+      <span class="material-icons rank-icon"> star </span>
+    </div>
+    <div class="post-activity-details">
+      <div data-testid="post-created-date" class="post-asked-date mat-small">
+        Asked: {{ post.created }}
+      </div>
+      <div data-testid="post-visits" class="post-visits mat-small">
+        {{ post.visits }} visits
+      </div>
+    </div>
+  </div>
+  <div class="post-content-wrapper">
+    <div data-testid="post-description" class="post-description">
+      {{ post.description }}
+    </div>
+    <div class="project-links">
+      <div data-testid="post-page-url" class="page-url mat-caption">
+        Page URL: {{ post.page_url }}
+      </div>
+      <div data-testid="post-repo-url" class="page-url mat-caption">
+        Repo URL: {{ post.repo_url }}
+      </div>
+    </div>
+    <div class="post-bottom-row">
+      <app-tag-list [tags]="post.categories"></app-tag-list>
+      <app-last-activity
+        [activity]="post.author_last_activity"
+      ></app-last-activity>
+    </div>
+  </div>
+</div>
