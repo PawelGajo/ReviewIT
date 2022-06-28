@@ -1,12 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  expectText,
+  findComponent
+} from '../../../../../shared/test-utils/helpers';
 import { POST_DETAILS_MOCK } from '../../../../../../assets/mocks/post.mock';
 import { Post } from '../../models/Post';
 import { PostDetailsComponent } from './post-details.component';
-import {
-  expectText,
-  findComponent,
-  findEl
-} from '../../../../../shared/test-utils/helpers';
 
 describe('PostDetailsComponent', () => {
   let component: PostDetailsComponent;

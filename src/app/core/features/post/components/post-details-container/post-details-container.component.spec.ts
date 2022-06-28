@@ -27,4 +27,9 @@ describe('PostDetailsContainerComponent', () => {
     const el = fixture.debugElement.query(By.css('app-post-details'));
     expect(el).toBeTruthy();
   });
+
+  it('should have answer list component', () => {
+    const el = fixture.debugElement.query(By.css('app-answer-list'));
+    expect(el).toBeTruthy();
+  });
 });

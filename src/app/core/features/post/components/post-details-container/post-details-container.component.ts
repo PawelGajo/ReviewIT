@@ -1,3 +1,5 @@
+import { ANSWERS_MOCK } from '../../../../../../assets/mocks/answer.mock';
+import { Answer } from '../../models/Answer';
 import { Component } from '@angular/core';
 import { POST_DETAILS_MOCK } from '../../../../../../assets/mocks/post.mock';
 import { Post } from '../../models/Post';
@@ -9,5 +11,6 @@ import { Post } from '../../models/Post';
 })
 export class PostDetailsContainerComponent {
   post: Post = POST_DETAILS_MOCK;
+  answers: Answer[] = ANSWERS_MOCK;
   constructor() {}
 }
