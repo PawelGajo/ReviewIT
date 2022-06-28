@@ -7,6 +7,6 @@ import { Answer } from '../../../models/Answer';
   styleUrls: ['./answer-details.component.scss']
 })
 export class AnswerDetailsComponent {
-  @Input() answer: Answer;
+  @Input() answer: Answer | null;
   constructor() {}
 }

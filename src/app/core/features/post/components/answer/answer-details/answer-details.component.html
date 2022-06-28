@@ -1,1 +1,31 @@
-test answer
+<div *ngIf="answer; else noAnswer" class="answer-wrapper">
+  <div
+    data-testid="answer-top-answer"
+    *ngIf="answer.is_top_answer"
+    class="top-answer"
+  >
+    Top Review
+  </div>
+  <div class="answer-overall-rank mat-small">
+    <span class="rank-label">
+      Overall project rank:
+      <span data-testid="answer-overall-rank">{{ answer.rank }}</span>
+    </span>
+    <span class="material-icons rank-icon"> star </span>
+  </div>
+  <div data-testid="answer-description" class="answer-description">
+    {{ answer.description }}
+  </div>
+  <app-answer-reviewed-category
+    *ngFor="let category of answer.reviewed_categories"
+  ></app-answer-reviewed-category>
+  <app-last-activity
+    [activity]="answer.author_last_activity"
+  ></app-last-activity>
+</div>
+
+<ng-template #noAnswer>
+  <span data-testid="no-answer-msg" class="no-answer-msg mat-small">
+    Something went wrong. Answer cannot be displayed.
+  </span>
+</ng-template>

@@ -6,7 +6,8 @@
   </div>
   <ng-template #noAnswer>No one has added an answer yet.</ng-template>
 </div>
-<app-answer-details
-  *ngFor="let answer of answers"
-  [answer]="answer"
-></app-answer-details>
+<mat-divider></mat-divider>
+<ng-container *ngFor="let answer of answers">
+  <app-answer-details [answer]="answer"></app-answer-details>
+  <mat-divider></mat-divider>
+</ng-container>

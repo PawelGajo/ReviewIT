@@ -7,7 +7,7 @@ export const ANSWERS_MOCK: Answer[] = [
     created: '20.12.2022',
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis beatae itaque sunt nihil cum amet aliquam, sapiente asperiores. Ex ratione consequuntur vero veritatis et ab deserunt incidunt nisi est quod? Beatae suscipit praesentiu ',
-    is_top_answer: false,
+    is_top_answer: true,
     rank: 5,
     author_last_activity: {
       author: AUTHOR_MOCK,
