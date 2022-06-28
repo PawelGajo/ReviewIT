@@ -8,13 +8,13 @@ import {
   searchPostsSuccess
 } from './posts.actions';
 import { HttpErrorResponse } from '@angular/common/http';
-import { PostListItem } from '../models/Post';
+import { Post } from '../models/Post';
 import { PostsFilter } from '../models/Filter';
 
 export const featureName = 'posts';
 
 export interface PostsState {
-  posts: PostListItem[];
+  posts: Post[];
   loading: boolean;
   error: HttpErrorResponse | undefined;
   query: string;

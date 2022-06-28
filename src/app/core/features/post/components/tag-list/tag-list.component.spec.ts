@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { MOCK_POST_LIST_ITEMS } from '../../models/mock-post-list';
-import { PostListItem } from '../../models/Post';
+import { MOCK_POST_LIST_ITEMS } from '../../../../../../assets/mocks/post-list.mock';
+import { Post } from '../../models/Post';
 import { TagListComponent } from './tag-list.component';
 
 describe('TagListComponent', () => {
   let component: TagListComponent;
   let fixture: ComponentFixture<TagListComponent>;
-  let posts: PostListItem[] = MOCK_POST_LIST_ITEMS;
+  let posts: Post[] = MOCK_POST_LIST_ITEMS;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

@@ -2,13 +2,13 @@ import { ChangeDetectionStrategy, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { findComponent, findEl } from 'src/app/shared/test-utils/helpers';
 import { LastActivityComponent } from './last-activity.component';
-import { MOCK_POST_LIST_ITEMS } from '../../models/mock-post-list';
-import { PostListItem } from '../../models/Post';
+import { MOCK_POST_LIST_ITEMS } from '../../../../../../assets/mocks/post-list.mock';
+import { Post } from '../../models/Post';
 
 describe('LastActivityComponent', () => {
   let component: LastActivityComponent;
   let fixture: ComponentFixture<LastActivityComponent>;
-  let posts: PostListItem[] = MOCK_POST_LIST_ITEMS;
+  let posts: Post[] = MOCK_POST_LIST_ITEMS;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

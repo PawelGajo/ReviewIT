@@ -15,6 +15,8 @@ import { UserModule } from '../user/user.module';
 import { PostFilterListComponent } from './components/post-filter-list/post-filter-list.component';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { PostDetailsContainerComponent } from './components/post-details-container/post-details-container.component';
+import { AnswerListComponent } from './components/answer/answer-list/answer-list.component';
+import { AnswerDetailsComponent } from './components/answer/answer-details/answer-details.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { PostDetailsContainerComponent } from './components/post-details-contain
     SearchPostInputComponent,
     PostFilterListComponent,
     PostDetailsComponent,
-    PostDetailsContainerComponent
+    PostDetailsContainerComponent,
+    AnswerListComponent,
+    AnswerDetailsComponent
   ],
   imports: [
     CommonModule,
