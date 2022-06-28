@@ -6,11 +6,9 @@
   >
     Top Review
   </div>
-  <div class="answer-overall-rank mat-small">
-    <span class="rank-label">
-      Overall project rank:
-      <span data-testid="answer-overall-rank">{{ answer.rank }}</span>
-    </span>
+  <div class="answer-overall-rank mat-h4">
+    <span class="rank-label"> Overall project rank: </span>
+    <span data-testid="answer-overall-rank">{{ answer.rank }}</span>
     <span class="material-icons rank-icon"> star </span>
   </div>
   <div data-testid="answer-description" class="answer-description">
@@ -18,6 +16,7 @@
   </div>
   <app-answer-reviewed-category
     *ngFor="let category of answer.reviewed_categories"
+    [category]="category"
   ></app-answer-reviewed-category>
   <app-last-activity
     [activity]="answer.author_last_activity"

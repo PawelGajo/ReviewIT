@@ -1,1 +1,11 @@
-<p>answer-reviewed-category works!</p>
+<div *ngIf="category" class="wrapper">
+  <div class="category-header mat-h4">
+    <div data-testid="reviewed-category-name" class="category-name">
+      {{ category.category.name }}
+    </div>
+    <div class="category-rank">
+      <span data-testid="reviewed-category-rank">{{ category.rank }}</span>
+      <span class="material-icons rank-icon"> star </span>
+    </div>
+  </div>
+</div>
