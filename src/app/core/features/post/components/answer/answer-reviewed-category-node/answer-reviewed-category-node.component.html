@@ -1,0 +1,21 @@
+<div *ngIf="node" class="node-wrapper">
+  <div class="node-type-icon">
+    <span
+      *ngIf="node.type === 'pro'"
+      data-testid="pro-node-icon"
+      class="material-icons node-icon pro-node-icon"
+    >
+      add
+    </span>
+    <span
+      *ngIf="node.type === 'con'"
+      data-testid="con-node-icon"
+      class="material-icons node-icon con-node-icon"
+    >
+      remove
+    </span>
+  </div>
+  <div data-testid="node-description" class="node-description">
+    {{ node.description }}
+  </div>
+</div>

@@ -8,4 +8,9 @@
       <span class="material-icons rank-icon"> star </span>
     </div>
   </div>
+  <ng-container *ngFor="let node of category.review_nodes">
+    <app-answer-reviewed-category-node
+      [node]="node"
+    ></app-answer-reviewed-category-node>
+  </ng-container>
 </div>

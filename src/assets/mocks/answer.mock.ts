@@ -25,7 +25,29 @@ export const ANSWERS_MOCK: Answer[] = [
         review_nodes: [
           {
             id: 1,
-            description: 'great',
+            description:
+              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laboriosam nostrum doloribus atque quae nam dicta consequatur rem dolore deleniti libero sed neque, blanditiis amet soluta explicabo laudantium molestiae! Beatae .Sapiente, delectus neque maiores non aut obcaecati ea beatae ad placeat corrupti consequatur et temporibus nobis quibusdam autem pariatur soluta officiis dolore qui distinctio porro harum, impedit laborum. Ea, iste.',
+            type: 'pro'
+          },
+          {
+            id: 2,
+            description: 'not great',
+            type: 'con'
+          }
+        ]
+      },
+      {
+        id: 2,
+        category: {
+          id: 1,
+          name: 'SEO'
+        },
+        rank: 5,
+        review_nodes: [
+          {
+            id: 1,
+            description:
+              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laboriosam nostrum doloribus atque quae nam dicta consequatur rem dolore deleniti libero sed neque, blanditiis amet soluta explicabo laudantium molestiae! Beatae .Sapiente, delectus neque maiores non aut obcaecati ea beatae ad placeat corrupti consequatur et temporibus nobis quibusdam autem pariatur soluta officiis dolore qui distinctio porro harum, impedit laborum. Ea, iste.',
             type: 'pro'
           },
           {

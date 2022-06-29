@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ANSWERS_MOCK } from '../../../../../../../assets/mocks/answer.mock';
 import { AnswerReviewedCategoryComponent } from './answer-reviewed-category.component';
+import { By } from '@angular/platform-browser';
 import { ReviewedCategory } from '../../../models/Answer';
 import { expectText } from '../../../../../../shared/test-utils/helpers';
 
@@ -34,5 +35,15 @@ describe('AnswerReviewedCategoryComponent', () => {
     component.category = category;
     fixture.detectChanges();
     expectText(fixture, 'reviewed-category-rank', '' + category.rank);
+  });
+
+  it('should have answer-reviewed-category-node components amount same as category.review_nodes lenght', () => {
+    component.category = category;
+    fixture.detectChanges();
+
+    const els = fixture.debugElement.queryAll(
+      By.css('app-answer-reviewed-category-node')
+    );
+    expect(els.length).toBe(category.review_nodes.length);
   });
 });

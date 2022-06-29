@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ReviewedCategory } from '../../../models/Answer';
 
 @Component({
@@ -6,9 +6,7 @@ import { ReviewedCategory } from '../../../models/Answer';
   templateUrl: './answer-reviewed-category.component.html',
   styleUrls: ['./answer-reviewed-category.component.scss']
 })
-export class AnswerReviewedCategoryComponent implements OnInit {
+export class AnswerReviewedCategoryComponent {
   @Input() category: ReviewedCategory;
   constructor() {}
-
-  ngOnInit(): void {}
 }

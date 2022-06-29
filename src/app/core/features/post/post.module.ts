@@ -1,6 +1,7 @@
 import { AnswerDetailsComponent } from './components/answer/answer-details/answer-details.component';
 import { AnswerListComponent } from './components/answer/answer-list/answer-list.component';
 import { AnswerReviewedCategoryComponent } from './components/answer/answer-reviewed-category/answer-reviewed-category.component';
+import { AnswerReviewedCategoryNodeComponent } from './components/answer/answer-reviewed-category-node/answer-reviewed-category-node.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { LastActivityComponent } from './components/last-activity/last-activity.component';
@@ -24,6 +25,7 @@ import { UserModule } from '../user/user.module';
     AnswerDetailsComponent,
     AnswerListComponent,
     AnswerReviewedCategoryComponent,
+    AnswerReviewedCategoryNodeComponent,
     LastActivityComponent,
     PostDetailsComponent,
     PostDetailsContainerComponent,
