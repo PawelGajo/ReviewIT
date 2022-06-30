@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { loadPosts, searchPosts } from '../../state/posts.actions';
 import { Observable } from 'rxjs';
-import { PostListItem } from '../../models/Post';
+import { Post } from '../../models/Post';
 import { PostsFilter } from '../../models/Filter';
 import { Store } from '@ngrx/store';
 import { selectPostsItems } from '../../state/posts.selector';
@@ -14,7 +14,7 @@ import { selectPostsItems } from '../../state/posts.selector';
 export class PostsContainerComponent implements OnInit {
   currentSearchQuery = '';
   currentPostsFilter: PostsFilter = PostsFilter.LATEST;
-  posts$: Observable<PostListItem[]>;
+  posts$: Observable<Post[]>;
 
   constructor(private store: Store) {
     this.posts$ = this.store.select(selectPostsItems);

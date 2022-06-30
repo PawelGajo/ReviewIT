@@ -126,11 +126,14 @@ $light-theme: mat.define-light-theme(
 // dark theme
 $dark-primary: mat.define-palette(mat.$pink-palette);
 $dark-accent: mat.define-palette(mat.$blue-gray-palette);
+$dark-warn: mat.define-palette(mat.$red-palette);
+
 $dark-theme: mat.define-dark-theme(
   (
     color: (
       primary: $dark-primary,
-      accent: $dark-accent
+      accent: $dark-accent,
+      warn: $dark-warn
     )
   )
 );
@@ -139,7 +142,7 @@ $dark-theme: mat.define-dark-theme(
   @include mat.all-component-themes($dark-theme);
   $primary-color: mat-color($dark-primary);
   $accent-color: mat-color($dark-accent);
-  $warn-color: mat-color($warn);
+  $warn-color: mat-color($dark-warn);
   $fg_palette: map-get($dark-theme, foreground);
   $bg_palette: map-get($dark-theme, background);
   $fg: map-get($fg_palette, text);
@@ -158,7 +161,7 @@ $dark-theme: mat.define-dark-theme(
   @include mat.all-component-themes($light-theme);
   $primary-color: mat-color($light-primary);
   $accent-color: mat-color($light-accent);
-  $warn-color: mat-color($warn);
+  $warn-color: mat-color($light-warn);
   $fg_palette: map-get($light-theme, foreground);
   $bg_palette: map-get($light-theme, background);
   $fg: map-get($fg_palette, text);

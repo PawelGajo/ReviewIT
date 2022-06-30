@@ -5,9 +5,9 @@ import {
   tick
 } from '@angular/core/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { MOCK_POST_LIST_ITEMS } from '../../models/mock-post-list';
+import { MOCK_POST_LIST_ITEMS } from '../../../../../../assets/mocks/post-list.mock';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { PostListItem } from '../../models/Post';
+import { Post } from '../../models/Post';
 import { PostsContainerComponent } from './posts-container.component';
 import { findComponent } from '../../../../../shared/test-utils/helpers';
 import { selectPostsItems } from '../../state/posts.selector';
@@ -15,7 +15,7 @@ import { selectPostsItems } from '../../state/posts.selector';
 describe('PostsContainerComponent', () => {
   let component: PostsContainerComponent;
   let fixture: ComponentFixture<PostsContainerComponent>;
-  let posts: PostListItem[] = MOCK_POST_LIST_ITEMS;
+  let posts: Post[] = MOCK_POST_LIST_ITEMS;
   let store: MockStore;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -68,7 +68,7 @@ describe('PostsContainerComponent', () => {
   });
 
   it('should get posts from store on init', fakeAsync(() => {
-    let fetchedPosts: PostListItem[] | undefined;
+    let fetchedPosts: Post[] | undefined;
     component.posts$.subscribe({
       next: (posts) => (fetchedPosts = posts),
       error: () => fail('Should be no error'),
@@ -82,7 +82,7 @@ describe('PostsContainerComponent', () => {
   }));
 
   it('should get queried posts from store on search fn', fakeAsync(() => {
-    let fetchedPosts: PostListItem[] | undefined;
+    let fetchedPosts: Post[] | undefined;
     component.posts$.subscribe({
       next: (posts) => (fetchedPosts = posts),
       error: () => fail('Should be no error'),

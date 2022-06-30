@@ -1,0 +1,15 @@
+.pro-node-icon {
+  color: var(--accent-green);
+}
+.con-node-icon {
+  color: var(--warn);
+}
+.node-icon {
+  position: relative;
+  bottom: 2px;
+}
+.node-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+}

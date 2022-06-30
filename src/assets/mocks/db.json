@@ -3,6 +3,7 @@
     {
       "id": 1,
       "answers": 2,
+      "description": "description",
       "categories": [
         {
           "id": 1,
@@ -29,6 +30,16 @@
         "created": "02.14.2022",
         "type": "answered"
       },
+      "author_last_activity": {
+        "author": {
+          "id": 1,
+          "username": "Jan Kowalski",
+          "reputation": 1200,
+          "avatar_link": "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Round&hairColor=BrownDark&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=BlazerSweater&eyeType=WinkWacky&eyebrowType=AngryNatural&mouthType=Concerned&skinColor=Yellow"
+        },
+        "created": "02.14.2022",
+        "type": "answered"
+      },
       "rank": 4.2,
       "title": "My new special Project",
       "visits": 2,
@@ -38,6 +49,7 @@
     {
       "id": 2,
       "answers": 4,
+      "description": "description",
       "categories": [
         {
           "id": 1,
@@ -64,6 +76,16 @@
         "created": "02.14.2022",
         "type": "answered"
       },
+      "author_last_activity": {
+        "author": {
+          "id": 1,
+          "username": "Jan Kowalski",
+          "reputation": 1200,
+          "avatar_link": "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Round&hairColor=BrownDark&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=BlazerSweater&eyeType=WinkWacky&eyebrowType=AngryNatural&mouthType=Concerned&skinColor=Yellow"
+        },
+        "created": "02.14.2022",
+        "type": "answered"
+      },
       "rank": 4.5,
       "title": "My second new special Project",
       "visits": 3,
@@ -72,6 +94,7 @@
     },
     {
       "id": 3,
+      "description": "description",
       "answers": 0,
       "categories": [
         {
@@ -90,6 +113,16 @@
       "created": "02.12.2020",
       "has_top_answer": false,
       "last_activity": {
+        "author": {
+          "id": 1,
+          "username": "Jan Kowalski",
+          "reputation": 1200,
+          "avatar_link": "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Round&hairColor=BrownDark&facialHairType=BeardLight&facialHairColor=BrownDark&clotheType=BlazerSweater&eyeType=WinkWacky&eyebrowType=AngryNatural&mouthType=Concerned&skinColor=Yellow"
+        },
+        "created": "02.14.2022",
+        "type": "answered"
+      },
+      "author_last_activity": {
         "author": {
           "id": 1,
           "username": "Jan Kowalski",

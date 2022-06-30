@@ -5,14 +5,14 @@ import {
   findComponent,
   findEl
 } from 'src/app/shared/test-utils/helpers';
-import { MOCK_POST_LIST_ITEMS } from '../../models/mock-post-list';
-import { PostListItem } from '../../models/Post';
+import { MOCK_POST_LIST_ITEMS } from '../../../../../../assets/mocks/post-list.mock';
+import { Post } from '../../models/Post';
 import { PostListItemComponent } from './post-list-item.component';
 
 describe('PostListItemComponent', () => {
   let component: PostListItemComponent;
   let fixture: ComponentFixture<PostListItemComponent>;
-  let posts: PostListItem[] = MOCK_POST_LIST_ITEMS;
+  let posts: Post[] = MOCK_POST_LIST_ITEMS;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

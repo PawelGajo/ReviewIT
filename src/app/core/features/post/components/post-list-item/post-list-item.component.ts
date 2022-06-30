@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { PostListItem } from '../../models/Post';
+import { Post } from '../../models/Post';
 
 @Component({
   selector: 'app-post-list-item',
@@ -8,6 +8,6 @@ import { PostListItem } from '../../models/Post';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostListItemComponent {
-  @Input() post: PostListItem;
+  @Input() post: Post;
   constructor() {}
 }

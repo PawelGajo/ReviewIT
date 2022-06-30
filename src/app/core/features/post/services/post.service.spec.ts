@@ -3,15 +3,15 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
-import { MOCK_POST_LIST_ITEMS } from '../models/mock-post-list';
-import { PostListItem } from '../models/Post';
+import { MOCK_POST_LIST_ITEMS } from '../../../../../assets/mocks/post-list.mock';
+import { Post } from '../models/Post';
 import { PostService } from './post.service';
 import { TestBed } from '@angular/core/testing';
 
 describe('PostService', () => {
   let service: PostService;
   let httpTestingController: HttpTestingController;
-  let posts: PostListItem[] = MOCK_POST_LIST_ITEMS;
+  let posts: Post[] = MOCK_POST_LIST_ITEMS;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -28,7 +28,7 @@ describe('PostService', () => {
   });
 
   it('should successfuly fetch posts ', () => {
-    let fetchedPosts: PostListItem[] | undefined;
+    let fetchedPosts: Post[] | undefined;
     service.getAll().subscribe((posts) => (fetchedPosts = posts));
 
     const request = httpTestingController.expectOne(`${service.POST_URL}`);
