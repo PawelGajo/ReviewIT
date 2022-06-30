@@ -8,8 +8,10 @@
   </div>
   <div class="answer-overall-rank mat-h4">
     <span class="rank-label"> Overall project rank: </span>
-    <span data-testid="answer-overall-rank">{{ answer.rank }}</span>
-    <span class="material-icons rank-icon"> star </span>
+    <app-star-component
+      [iconSize]="16"
+      [rank]="answer.rank"
+    ></app-star-component>
   </div>
   <div data-testid="answer-description" class="answer-description">
     {{ answer.description }}

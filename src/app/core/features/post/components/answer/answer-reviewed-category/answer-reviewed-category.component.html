@@ -1,12 +1,15 @@
 <div *ngIf="category" class="wrapper">
   <div class="category-header mat-h4">
-    <div data-testid="reviewed-category-name" class="category-name">
-      {{ category.category.name }}
+    <div class="category-name">
+      <span data-testid="reviewed-category-name">{{
+        category.category.name
+      }}</span
+      ><span>:</span>
     </div>
-    <div class="category-rank">
-      <span data-testid="reviewed-category-rank">{{ category.rank }}</span>
-      <span class="material-icons rank-icon"> star </span>
-    </div>
+    <app-star-component
+      [iconSize]="16"
+      [rank]="category.rank"
+    ></app-star-component>
   </div>
   <ng-container *ngFor="let node of category.review_nodes">
     <app-answer-reviewed-category-node

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import {
   expectText,
+  findComponent,
   findEl
 } from '../../../../../../shared/test-utils/helpers';
 import { ANSWERS_MOCK } from '../../../../../../../assets/mocks/answer.mock';
@@ -60,7 +61,8 @@ describe('AnswerDetailsComponent', () => {
       answer.reviewed_categories.length
     );
     expect(answerLastActivity).toBeTruthy();
-    expectText(fixture, 'answer-overall-rank', '' + answer.rank);
+    const answerOverallRank = findComponent(fixture, 'app-star-component');
+    expect(answerOverallRank).toBeTruthy();
     expectText(fixture, 'answer-description', answer.description.trim());
   });
 

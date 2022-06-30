@@ -6,10 +6,11 @@
 
     <div class="post-activity-details">
       <div class="post-rank mat-small">
-        <span class="rank-label">
-          Project rank: <span data-testid="post-rank">{{ post.rank }}</span>
-        </span>
-        <span class="material-icons rank-icon"> star </span>
+        <span class="rank-label"> Project rank: </span>
+        <app-star-component
+          [iconSize]="16"
+          [rank]="post.rank"
+        ></app-star-component>
       </div>
       <div data-testid="post-created-date" class="post-asked-date mat-small">
         Asked: {{ post.created }}

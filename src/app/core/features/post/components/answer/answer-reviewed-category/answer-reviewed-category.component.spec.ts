@@ -1,9 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  expectText,
+  findComponent
+} from '../../../../../../shared/test-utils/helpers';
 import { ANSWERS_MOCK } from '../../../../../../../assets/mocks/answer.mock';
 import { AnswerReviewedCategoryComponent } from './answer-reviewed-category.component';
 import { By } from '@angular/platform-browser';
 import { ReviewedCategory } from '../../../models/Answer';
-import { expectText } from '../../../../../../shared/test-utils/helpers';
 
 describe('AnswerReviewedCategoryComponent', () => {
   let component: AnswerReviewedCategoryComponent;
@@ -34,7 +37,8 @@ describe('AnswerReviewedCategoryComponent', () => {
   it('should display category rank', () => {
     component.category = category;
     fixture.detectChanges();
-    expectText(fixture, 'reviewed-category-rank', '' + category.rank);
+    const categoryRank = findComponent(fixture, 'app-star-component');
+    expect(categoryRank).toBeTruthy();
   });
 
   it('should have answer-reviewed-category-node components amount same as category.review_nodes lenght', () => {

@@ -11,9 +11,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
+import { StarComponentComponent } from './components/star-component/star-component.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [StarComponentComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -30,6 +31,7 @@ import { NgModule } from '@angular/core';
     MatInputModule
   ],
   exports: [
+    StarComponentComponent,
     FormsModule,
     LayoutModule,
     MatButtonModule,

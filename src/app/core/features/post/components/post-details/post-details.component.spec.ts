@@ -34,11 +34,13 @@ describe('PostDetailsComponent', () => {
 
     expectText(fixture, 'post-title', post.title);
     expectText(fixture, 'post-description', post.description);
-    expectText(fixture, 'post-rank', '' + post.rank);
     expectText(fixture, 'post-created-date', `Asked: ${post.created}`);
     expectText(fixture, 'post-page-url', `Page URL: ${post.page_url}`);
     expectText(fixture, 'post-repo-url', `Repo URL: ${post.repo_url}`);
     expectText(fixture, 'post-visits', `${post.visits} visits`);
+
+    const postRank = findComponent(fixture, 'app-star-component');
+    expect(postRank).toBeTruthy();
 
     const tags = findComponent(fixture, 'app-tag-list');
     expect(tags).toBeTruthy();
