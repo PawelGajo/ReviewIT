@@ -3,13 +3,14 @@
     <div data-testid="post-title" class="post-title mat-title">
       {{ post.title }}
     </div>
-    <div class="post-rank mat-small">
-      <span class="rank-label">
-        Project rank: <span data-testid="post-rank">{{ post.rank }}</span>
-      </span>
-      <span class="material-icons rank-icon"> star </span>
-    </div>
+
     <div class="post-activity-details">
+      <div class="post-rank mat-small">
+        <span class="rank-label">
+          Project rank: <span data-testid="post-rank">{{ post.rank }}</span>
+        </span>
+        <span class="material-icons rank-icon"> star </span>
+      </div>
       <div data-testid="post-created-date" class="post-asked-date mat-small">
         Asked: {{ post.created }}
       </div>
@@ -18,6 +19,7 @@
       </div>
     </div>
   </div>
+  <mat-divider></mat-divider>
   <div class="post-content-wrapper">
     <div data-testid="post-description" class="post-description">
       {{ post.description }}

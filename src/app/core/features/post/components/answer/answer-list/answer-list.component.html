@@ -1,13 +1,15 @@
-<div data-testid="answers-list-header" class="answers-amount-header mat-h3">
-  <div *ngIf="answers && answers.length > 0; else noAnswer">
-    {{ answers.length }} Answer<ng-container *ngIf="answers.length > 1"
-      >s</ng-container
-    >
+<div class="answer-list-wrapper">
+  <div data-testid="answers-list-header" class="answers-amount-header mat-h3">
+    <div *ngIf="answers && answers.length > 0; else noAnswer">
+      {{ answers.length }} Answer<ng-container *ngIf="answers.length > 1"
+        >s</ng-container
+      >
+    </div>
+    <ng-template #noAnswer>No one has added an answer yet.</ng-template>
   </div>
-  <ng-template #noAnswer>No one has added an answer yet.</ng-template>
-</div>
-<mat-divider></mat-divider>
-<ng-container *ngFor="let answer of answers">
-  <app-answer-details [answer]="answer"></app-answer-details>
   <mat-divider></mat-divider>
-</ng-container>
+  <ng-container *ngFor="let answer of answers">
+    <app-answer-details [answer]="answer"></app-answer-details>
+    <mat-divider></mat-divider>
+  </ng-container>
+</div>
