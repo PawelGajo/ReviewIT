@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AnswerReviewedCategoryNodeComponent } from './answer-reviewed-category-node.component';
 import {
   expectText,
   findEl
 } from '../../../../../../shared/test-utils/helpers';
+import { AnswerReviewedCategoryNodeComponent } from './answer-reviewed-category-node.component';
 import { ReviewCategoryNode } from '../../../models/Answer';
 
 describe('AnswerReviewedCategoryNodeComponent', () => {
