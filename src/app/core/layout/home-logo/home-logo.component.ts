@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-home-logo',
   template: `<div class="logo-wrapper">
-    <a href="#">
+    <a [routerLink]="['/posts']">
       <h1 class="logo">
         <img
           class="logo-img"
