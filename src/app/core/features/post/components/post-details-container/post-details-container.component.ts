@@ -1,8 +1,10 @@
 import { ANSWERS_MOCK } from '../../../../../../assets/mocks/answer.mock';
 import { Answer } from '../../models/Answer';
 import { Component } from '@angular/core';
-import { POST_DETAILS_MOCK } from '../../../../../../assets/mocks/post.mock';
+import { Observable } from 'rxjs';
 import { Post } from '../../models/Post';
+import { Store } from '@ngrx/store';
+import { selectSelectedPost } from '../../state/posts.selector';
 
 @Component({
   selector: 'app-post-details-container',
@@ -10,7 +12,9 @@ import { Post } from '../../models/Post';
   styleUrls: ['./post-details-container.component.scss']
 })
 export class PostDetailsContainerComponent {
-  post: Post = POST_DETAILS_MOCK;
+  post$: Observable<Post | undefined>;
   answers: Answer[] = ANSWERS_MOCK;
-  constructor() {}
+  constructor(private store: Store) {
+    this.post$ = this.store.select(selectSelectedPost);
+  }
 }

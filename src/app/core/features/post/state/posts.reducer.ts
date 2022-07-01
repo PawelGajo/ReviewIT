@@ -5,7 +5,8 @@ import {
   loadPostsSuccess,
   searchPosts,
   searchPostsFailure,
-  searchPostsSuccess
+  searchPostsSuccess,
+  selectPost
 } from './posts.actions';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Post } from '../models/Post';
@@ -19,10 +20,12 @@ export interface PostsState {
   error: HttpErrorResponse | undefined;
   query: string;
   postsFilter: PostsFilter;
+  selectedPost: Post | undefined;
 }
 
 const initialState: PostsState = {
   posts: [],
+  selectedPost: undefined,
   loading: false,
   error: undefined,
   query: '',
@@ -71,6 +74,14 @@ export const postsReducer = createReducer(
       ...state,
       loading: false,
       error: error
+    })
+  ),
+  on(
+    selectPost,
+    (state, { post }): PostsState => ({
+      ...state,
+      loading: false,
+      selectedPost: post
     })
   )
 );

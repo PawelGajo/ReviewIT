@@ -7,6 +7,6 @@ import { Post } from '../../models/Post';
   styleUrls: ['./post-details.component.scss']
 })
 export class PostDetailsComponent {
-  @Input() post: Post;
+  @Input() post: Post | null | undefined;
   constructor() {}
 }

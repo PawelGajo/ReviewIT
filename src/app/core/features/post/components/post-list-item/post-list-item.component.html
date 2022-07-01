@@ -18,8 +18,9 @@
   <div class="post-details">
     <div data-testid="post-title">
       <a
+        data-testid="post-details-link"
+        (click)="openPostDetails()"
         class="post-title mat-subheading-1"
-        [routerLink]="['/posts', post.id]"
         >{{ post.title }}</a
       >
     </div>

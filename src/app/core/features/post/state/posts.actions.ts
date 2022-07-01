@@ -12,7 +12,8 @@ export const enum PostActions {
   SEARCH_POSTS_ACTION_FAILURE = '[Post List] Search Posts Failure',
   FILTER_POSTS_ACTION = '[Post List] Filter Posts',
   FILTER_POSTS_ACTION_SUCCESS = '[Post List] Filter Posts Success',
-  FILTER_POSTS_ACTION_FAILURE = '[Post List] Filter Posts Failure'
+  FILTER_POSTS_ACTION_FAILURE = '[Post List] Filter Posts Failure',
+  SELECT_POST = '[Post List] Select Post'
 }
 
 export const loadPosts = createAction(PostActions.LOAD_POSTS_ACTION);
@@ -40,4 +41,9 @@ export const searchPostsSuccess = createAction(
 export const searchPostsFailure = createAction(
   PostActions.SEARCH_POSTS_ACTION_FAILURE,
   props<{ error: HttpErrorResponse }>()
+);
+
+export const selectPost = createAction(
+  PostActions.SELECT_POST,
+  props<{ post: Post }>()
 );
