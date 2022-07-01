@@ -1,5 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import {
+  loadAnswerForPostFailure,
+  loadAnswerForPostSuccess,
   loadPosts,
   loadPostsFailure,
   loadPostsSuccess,
@@ -8,6 +10,7 @@ import {
   searchPostsSuccess,
   selectPost
 } from './posts.actions';
+import { Answer } from '../models/Answer';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Post } from '../models/Post';
 import { PostsFilter } from '../models/Filter';
@@ -21,11 +24,13 @@ export interface PostsState {
   query: string;
   postsFilter: PostsFilter;
   selectedPost: Post | undefined;
+  answers_for_selected_post: Answer[] | undefined;
 }
 
 const initialState: PostsState = {
   posts: [],
   selectedPost: undefined,
+  answers_for_selected_post: undefined,
   loading: false,
   error: undefined,
   query: '',
@@ -73,6 +78,23 @@ export const postsReducer = createReducer(
     (state, { error }): PostsState => ({
       ...state,
       loading: false,
+      error: error
+    })
+  ),
+  on(
+    loadAnswerForPostSuccess,
+    (state, { answers }): PostsState => ({
+      ...state,
+      loading: false,
+      answers_for_selected_post: answers
+    })
+  ),
+  on(
+    loadAnswerForPostFailure,
+    (state, { error }): PostsState => ({
+      ...state,
+      loading: false,
+      answers_for_selected_post: undefined,
       error: error
     })
   ),

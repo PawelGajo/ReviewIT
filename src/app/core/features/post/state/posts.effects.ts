@@ -1,6 +1,9 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
   PostActions,
+  loadAnswerForPost,
+  loadAnswerForPostFailure,
+  loadAnswerForPostSuccess,
   loadPostsFailure,
   loadPostsSuccess,
   searchPosts,
@@ -33,6 +36,18 @@ export class PostEffects {
         this.postService.search(action.query).pipe(
           map((posts) => searchPostsSuccess({ posts })),
           catchError((error) => of(searchPostsFailure({ error })))
+        )
+      )
+    );
+  });
+
+  loadAnswersForSelectedPosts$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(loadAnswerForPost),
+      switchMap((action) =>
+        this.postService.getAnswersForPost(action.postId).pipe(
+          map((answers) => loadAnswerForPostSuccess({ answers })),
+          catchError((error) => of(loadAnswerForPostFailure({ error })))
         )
       )
     );

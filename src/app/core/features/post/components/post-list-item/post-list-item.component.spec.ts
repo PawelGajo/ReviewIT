@@ -7,11 +7,11 @@ import {
   findComponent,
   findEl
 } from 'src/app/shared/test-utils/helpers';
+import { loadAnswerForPost, selectPost } from '../../state/posts.actions';
 import { MOCK_POST_LIST_ITEMS } from '../../../../../../assets/mocks/post-list.mock';
 import { Post } from '../../models/Post';
 import { PostListItemComponent } from './post-list-item.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { selectPost } from '../../state/posts.actions';
 
 describe('PostListItemComponent', () => {
   let component: PostListItemComponent;
@@ -102,7 +102,7 @@ describe('PostListItemComponent', () => {
     expect(el.properties['top_answer']).toEqual(post.has_top_answer);
   });
 
-  it('should dispatch new post after link click', () => {
+  it('should dispatch new post and load answers for selected post after link click', () => {
     component.post = post;
     fixture.detectChanges();
     spyOn(component, 'openPostDetails').and.callThrough();
@@ -110,6 +110,10 @@ describe('PostListItemComponent', () => {
     click(fixture, 'post-details-link');
 
     expect(component.openPostDetails).toHaveBeenCalledTimes(1);
+    expect(store.dispatch).toHaveBeenCalledTimes(2);
+    expect(store.dispatch).toHaveBeenCalledWith(
+      loadAnswerForPost({ postId: post.id })
+    );
     expect(store.dispatch).toHaveBeenCalledWith(selectPost({ post }));
   });
 });

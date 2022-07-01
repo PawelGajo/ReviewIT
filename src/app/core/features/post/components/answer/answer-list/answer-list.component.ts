@@ -7,6 +7,6 @@ import { Answer } from '../../../models/Answer';
   styleUrls: ['./answer-list.component.scss']
 })
 export class AnswerListComponent {
-  @Input() answers: Answer[] | null;
+  @Input() answers: Answer[] | null | undefined;
   constructor() {}
 }

@@ -1,8 +1,9 @@
+/* eslint-disable ngrx/avoid-dispatching-multiple-actions-sequentially */
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { loadAnswerForPost, selectPost } from '../../state/posts.actions';
 import { Post } from '../../models/Post';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectPost } from '../../state/posts.actions';
 
 @Component({
   selector: 'app-post-list-item',
@@ -16,6 +17,7 @@ export class PostListItemComponent {
 
   openPostDetails() {
     this.store.dispatch(selectPost({ post: this.post }));
+    this.store.dispatch(loadAnswerForPost({ postId: this.post.id }));
     this.router.navigate([`/posts/${this.post.id}`]);
   }
 }
