@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import {
+  click,
   expectText,
   findComponent,
   findEl
@@ -8,14 +10,19 @@ import {
 import { MOCK_POST_LIST_ITEMS } from '../../../../../../assets/mocks/post-list.mock';
 import { Post } from '../../models/Post';
 import { PostListItemComponent } from './post-list-item.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { selectPost } from '../../state/posts.actions';
 
 describe('PostListItemComponent', () => {
   let component: PostListItemComponent;
   let fixture: ComponentFixture<PostListItemComponent>;
-  let posts: Post[] = MOCK_POST_LIST_ITEMS;
+  let post: Post = MOCK_POST_LIST_ITEMS[0];
+  let store: MockStore;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideMockStore()],
+      imports: [RouterTestingModule],
       declarations: [PostListItemComponent],
       schemas: [NO_ERRORS_SCHEMA]
     })
@@ -24,6 +31,8 @@ describe('PostListItemComponent', () => {
       })
       .compileComponents();
     // workaround for onpush problem https://github.com/angular/angular/issues/12313
+
+    store = TestBed.inject(MockStore);
   });
 
   beforeEach(() => {
@@ -44,52 +53,63 @@ describe('PostListItemComponent', () => {
   });
 
   it('should NOT display error message if post input is not provided', () => {
-    component.post = posts[0];
+    component.post = post;
     fixture.detectChanges();
     const el = findEl(fixture, 'post-no-data');
     expect(el).toBeFalsy();
   });
 
   it('should have app-tag-list component', () => {
-    component.post = posts[0];
+    component.post = post;
     fixture.detectChanges();
     const el = findComponent(fixture, 'app-tag-list');
     expect(el).toBeTruthy();
-    expect(el.properties['tags']).toEqual(posts[0].categories);
+    expect(el.properties['tags']).toEqual(post.categories);
   });
 
   it('should have correct project rank', () => {
-    component.post = posts[0];
+    component.post = post;
     fixture.detectChanges();
-    expectText(fixture, 'post-rank', `Project rank: ${posts[0].rank}`);
+    expectText(fixture, 'post-rank', `Project rank: ${post.rank}`);
   });
 
   it('should have correct post visits label', () => {
-    component.post = posts[0];
+    component.post = post;
     fixture.detectChanges();
-    expectText(fixture, 'post-visits', `${posts[0].visits} visits`);
+    expectText(fixture, 'post-visits', `${post.visits} visits`);
   });
 
   it('should have correct page-url', () => {
-    component.post = posts[0];
+    component.post = post;
     fixture.detectChanges();
-    expectText(fixture, 'post-page-url', `Page URL: ${posts[0].page_url}`);
+    expectText(fixture, 'post-page-url', `Page URL: ${post.page_url}`);
   });
 
   it('should have last-activity component', () => {
-    component.post = posts[0];
+    component.post = post;
     fixture.detectChanges();
     const el = findComponent(fixture, 'app-last-activity');
     expect(el).toBeTruthy();
-    expect(el.properties['activity']).toEqual(posts[0].last_activity);
+    expect(el.properties['activity']).toEqual(post.last_activity);
   });
 
   it('should have post-list-item-answer component', () => {
-    component.post = posts[0];
+    component.post = post;
     fixture.detectChanges();
     const el = findComponent(fixture, 'app-post-list-item-answer');
     expect(el).toBeTruthy();
-    expect(el.properties['answers']).toEqual(posts[0].answers);
-    expect(el.properties['top_answer']).toEqual(posts[0].has_top_answer);
+    expect(el.properties['answers']).toEqual(post.answers);
+    expect(el.properties['top_answer']).toEqual(post.has_top_answer);
+  });
+
+  it('should dispatch new post after link click', () => {
+    component.post = post;
+    fixture.detectChanges();
+    spyOn(component, 'openPostDetails').and.callThrough();
+    spyOn(store, 'dispatch').and.callThrough();
+    click(fixture, 'post-details-link');
+
+    expect(component.openPostDetails).toHaveBeenCalledTimes(1);
+    expect(store.dispatch).toHaveBeenCalledWith(selectPost({ post }));
   });
 });

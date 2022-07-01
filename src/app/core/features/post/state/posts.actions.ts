@@ -16,7 +16,8 @@ export const enum PostActions {
   FILTER_POSTS_ACTION_FAILURE = '[Post List] Filter Posts Failure',
   LOAD_ANSWERS_FOR_SELECTED_POST = '[Post List] Load Answers for selected Post',
   LOAD_ANSWERS_FOR_SELECTED_POST_SUCCESS = '[Post List] Load Answers for selected Post Success',
-  LOAD_ANSWERS_FOR_SELECTED_POST_FAILURE = '[Post List] Load Answers for selected Post Failure'
+  LOAD_ANSWERS_FOR_SELECTED_POST_FAILURE = '[Post List] Load Answers for selected Post Failure',
+  SELECT_POST = '[Post List] Select Post'
 }
 
 export const loadPosts = createAction(PostActions.LOAD_POSTS_ACTION);
@@ -59,4 +60,9 @@ export const loadAnswerForPostSuccess = createAction(
 export const loadAnswerForPostFailure = createAction(
   PostActions.LOAD_ANSWERS_FOR_SELECTED_POST_FAILURE,
   props<{ error: HttpErrorResponse }>()
+);
+
+export const selectPost = createAction(
+  PostActions.SELECT_POST,
+  props<{ post: Post }>()
 );

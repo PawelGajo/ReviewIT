@@ -16,8 +16,13 @@
     </div>
   </div>
   <div class="post-details">
-    <div data-testid="post-title" class="post-title mat-subheading-1">
-      {{ post.title }}
+    <div data-testid="post-title">
+      <a
+        data-testid="post-details-link"
+        (click)="openPostDetails()"
+        class="post-title mat-subheading-1"
+        >{{ post.title }}</a
+      >
     </div>
     <div data-testid="post-page-url" class="page-url mat-caption">
       Page URL: {{ post.page_url }}
