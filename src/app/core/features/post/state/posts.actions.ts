@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { Answer } from '../models/Answer';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Post } from '../models/Post';
 import { PostsFilter } from '../models/Filter';
@@ -12,7 +13,10 @@ export const enum PostActions {
   SEARCH_POSTS_ACTION_FAILURE = '[Post List] Search Posts Failure',
   FILTER_POSTS_ACTION = '[Post List] Filter Posts',
   FILTER_POSTS_ACTION_SUCCESS = '[Post List] Filter Posts Success',
-  FILTER_POSTS_ACTION_FAILURE = '[Post List] Filter Posts Failure'
+  FILTER_POSTS_ACTION_FAILURE = '[Post List] Filter Posts Failure',
+  LOAD_ANSWERS_FOR_SELECTED_POST = '[Post List] Load Answers for selected Post',
+  LOAD_ANSWERS_FOR_SELECTED_POST_SUCCESS = '[Post List] Load Answers for selected Post Success',
+  LOAD_ANSWERS_FOR_SELECTED_POST_FAILURE = '[Post List] Load Answers for selected Post Failure'
 }
 
 export const loadPosts = createAction(PostActions.LOAD_POSTS_ACTION);
@@ -39,5 +43,20 @@ export const searchPostsSuccess = createAction(
 
 export const searchPostsFailure = createAction(
   PostActions.SEARCH_POSTS_ACTION_FAILURE,
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const loadAnswerForPost = createAction(
+  PostActions.LOAD_ANSWERS_FOR_SELECTED_POST,
+  props<{ postId: number }>()
+);
+
+export const loadAnswerForPostSuccess = createAction(
+  PostActions.LOAD_ANSWERS_FOR_SELECTED_POST_SUCCESS,
+  props<{ answers: Answer[] }>()
+);
+
+export const loadAnswerForPostFailure = createAction(
+  PostActions.LOAD_ANSWERS_FOR_SELECTED_POST_FAILURE,
   props<{ error: HttpErrorResponse }>()
 );
