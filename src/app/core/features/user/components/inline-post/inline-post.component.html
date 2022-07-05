@@ -1,0 +1,19 @@
+<div *ngIf="post" class="wrapper">
+  <div
+    data-testid="answers-box"
+    class="post-answers"
+    [ngClass]="{
+      'top-answer': post.has_top_answer === true,
+      'no-answer': post.answers === 0
+    }"
+  >
+    {{ post.answers }}
+  </div>
+  <div class="post-rank">
+    <app-star-component [rank]="post.rank" [iconSize]="14"></app-star-component>
+  </div>
+  <div data-testid="post-title" class="post-title">{{ post.title }}</div>
+  <div data-testid="post-created" class="post-created mat-small">
+    {{ post.created }}
+  </div>
+</div>

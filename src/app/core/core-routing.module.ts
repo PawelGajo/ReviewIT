@@ -13,6 +13,11 @@ const routes: Routes = [
           import('./features/post/post.module').then((m) => m.PostModule)
       },
       {
+        path: 'users',
+        loadChildren: () =>
+          import('./features/user/user.module').then((m) => m.UserModule)
+      },
+      {
         path: '',
         redirectTo: '/posts',
         pathMatch: 'full'

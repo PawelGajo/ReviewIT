@@ -1,0 +1,39 @@
+<div class="user-panel-wrapper">
+  <app-user-info></app-user-info>
+  <div data-testid="summary-header" class="summary-header mat-h2">
+    Activity Summary
+  </div>
+  <div data-testid="added-posts" class="added-posts panel-item">
+    <div data-testid="added-posts-header" class="item-header mat-h3">
+      Added projects:
+    </div>
+    <div class="posts-list">
+      <app-inline-post
+        *ngFor="let item of addedPosts"
+        [post]="item"
+      ></app-inline-post>
+    </div>
+  </div>
+  <div data-testid="added-reviews" class="added-reviews panel-item">
+    <div data-testid="added-reviews-header" class="item-header mat-h3">
+      Added reviews:
+    </div>
+    <div class="posts-list">
+      <app-inline-post
+        *ngFor="let item of addedReviews"
+        [post]="item"
+      ></app-inline-post>
+    </div>
+  </div>
+  <div data-testid="added-reviews-top" class="added-reviews-top panel-item">
+    <div data-testid="added-reviews-top-header" class="item-header mat-h3">
+      Added reviews marked as TOP:
+    </div>
+    <div class="posts-list">
+      <app-inline-post
+        *ngFor="let item of addedTopReviews"
+        [post]="item"
+      ></app-inline-post>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-home-leftbar',
   template: ` <app-user-info></app-user-info>
     <mat-nav-list>
-      <a mat-list-item href="#">My profile</a>
+      <a mat-list-item [routerLink]="['users', 1, 'details']">My profile</a>
       <a mat-list-item href="#">User Ranking</a>
       <a mat-list-item href="#">Recommended resources</a>
       <a mat-list-item href="#">Help</a>

@@ -1,0 +1,40 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 3px;
+}
+.post-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.post-title {
+  flex: 2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.post-created {
+  display: flex;
+  justify-content: flex-end;
+}
+.post-answers {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 6px;
+  border: 1px solid var(--accent-green);
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.top-answer {
+  background-color: var(--accent-green);
+}
+
+.no-answer {
+  border: 1px solid var(--accent2-bg);
+}
