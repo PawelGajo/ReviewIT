@@ -1,3 +1,4 @@
+import { AddPostButtonComponent } from './components/add-post-button/add-post-button.component';
 import { AnswerDetailsComponent } from './components/answer/answer-details/answer-details.component';
 import { AnswerListComponent } from './components/answer/answer-list/answer-list.component';
 import { AnswerReviewedCategoryComponent } from './components/answer/answer-reviewed-category/answer-reviewed-category.component';
@@ -9,6 +10,7 @@ import { NgModule } from '@angular/core';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
 import { PostDetailsContainerComponent } from './components/post-details-container/post-details-container.component';
 import { PostFilterListComponent } from './components/post-filter-list/post-filter-list.component';
+import { PostFormComponent } from './components/post-form/post-form.component';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostListItemAnswerComponent } from './components/post-list-item-answer/post-list-item-answer.component';
 import { PostListItemComponent } from './components/post-list-item/post-list-item.component';
@@ -36,7 +38,9 @@ import { UserModule } from '../user/user.module';
     PostsContainerComponent,
     SearchPostInputComponent,
     TagComponent,
-    TagListComponent
+    TagListComponent,
+    AddPostButtonComponent,
+    PostFormComponent
   ],
   imports: [
     CommonModule,
