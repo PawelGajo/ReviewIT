@@ -1,7 +1,7 @@
 import { User } from '../../user/models/User';
 
 export type Post = {
-  id: number;
+  id?: number;
   created: string;
   title: string;
   description: string;
@@ -14,6 +14,14 @@ export type Post = {
   last_activity: PostActivity;
   answers: number;
   categories: PostCategory[];
+};
+
+export type NewPost = {
+  title: string;
+  description: string;
+  page_url: string;
+  repo_url: string;
+  categories: number[];
 };
 
 export type PostActivity = {

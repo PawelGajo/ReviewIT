@@ -10,6 +10,7 @@ import {
 import { loadAnswerForPost, selectPost } from '../../state/posts.actions';
 import { MOCK_POST_LIST_ITEMS } from '../../../../../../assets/mocks/post-list.mock';
 import { Post } from '../../models/Post';
+import { PostDetailsContainerComponent } from '../post-details-container/post-details-container.component';
 import { PostListItemComponent } from './post-list-item.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -22,7 +23,11 @@ describe('PostListItemComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [provideMockStore()],
-      imports: [RouterTestingModule],
+      imports: [
+        RouterTestingModule.withRoutes([
+          { path: 'posts/:id', component: PostDetailsContainerComponent }
+        ])
+      ],
       declarations: [PostListItemComponent],
       schemas: [NO_ERRORS_SCHEMA]
     })
@@ -112,7 +117,7 @@ describe('PostListItemComponent', () => {
     expect(component.openPostDetails).toHaveBeenCalledTimes(1);
     expect(store.dispatch).toHaveBeenCalledTimes(2);
     expect(store.dispatch).toHaveBeenCalledWith(
-      loadAnswerForPost({ postId: post.id })
+      loadAnswerForPost({ postId: post!.id! })
     );
     expect(store.dispatch).toHaveBeenCalledWith(selectPost({ post }));
   });

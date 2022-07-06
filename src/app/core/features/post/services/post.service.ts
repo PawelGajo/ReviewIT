@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { NewPost, Post } from '../models/Post';
+import { AUTHOR_MOCK } from '../../../../../assets/mocks/author.mock';
 import { Answer } from '../models/Answer';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Post } from '../models/Post';
 import { environment as env } from '../../../../../environments/environment';
 
 @Injectable({
@@ -15,6 +16,43 @@ export class PostService {
   ANSWERS_URL = `${env.apiUrl}/answers`;
 
   constructor(private http: HttpClient) {}
+
+  createPost(post: NewPost): Observable<Post> {
+    //TODO change for prod backend
+    const postWithExtraFields: Post = {
+      ...post,
+      answers: 0,
+      author_last_activity: {
+        author: AUTHOR_MOCK,
+        created: '01-04-2022',
+        type: 'created'
+      },
+      created: '01-04-2022',
+      has_top_answer: false,
+      last_activity: {
+        author: AUTHOR_MOCK,
+        created: '01-04-2022',
+        type: 'created'
+      },
+      rank: 0,
+      visits: 0,
+      categories: [
+        {
+          id: 1,
+          name: 'Code quality'
+        },
+        {
+          id: 2,
+          name: 'Design'
+        },
+        {
+          id: 3,
+          name: 'Performance'
+        }
+      ]
+    };
+    return this.http.post<Post>(this.POST_URL, postWithExtraFields);
+  }
 
   getAll(): Observable<Post[]> {
     return this.http.get<Post[]>(this.POST_URL);

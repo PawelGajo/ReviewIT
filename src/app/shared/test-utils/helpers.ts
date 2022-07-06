@@ -4,6 +4,7 @@ import { DebugElement } from '@angular/core';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { MatButtonHarness } from '@angular/material/button/testing';
 import { MatInputHarness } from '@angular/material/input/testing';
+import { MatSelectHarness } from '@angular/material/select/testing';
 
 export function setFieldValue<T>(
   fixture: ComponentFixture<T>,
@@ -105,4 +106,20 @@ export async function clickButton(
   );
   expect(button).toBeTruthy();
   await button.click();
+}
+
+export async function selectListOption(
+  loader: HarnessLoader,
+  predicate: string,
+  option: number
+): Promise<string> {
+  const select = await loader.getHarness(
+    MatSelectHarness.with({ selector: `[data-testid="${predicate}"` })
+  );
+  await select.open();
+  const options = await select.getOptions();
+  expect(options.length).toBeGreaterThan(0);
+
+  await options[option].click();
+  return await select.getValueText();
 }

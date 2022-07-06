@@ -1,5 +1,7 @@
-import { createReducer, on } from '@ngrx/store';
 import {
+  createPost,
+  createPostFailure,
+  createPostSuccess,
   loadAnswerForPostFailure,
   loadAnswerForPostSuccess,
   loadPosts,
@@ -10,6 +12,7 @@ import {
   searchPostsSuccess,
   selectPost
 } from './posts.actions';
+import { createReducer, on } from '@ngrx/store';
 import { Answer } from '../models/Answer';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Post } from '../models/Post';
@@ -104,6 +107,31 @@ export const postsReducer = createReducer(
       ...state,
       loading: false,
       selectedPost: post
+    })
+  ),
+  on(
+    createPost,
+    (state): PostsState => ({
+      ...state,
+      loading: true
+    })
+  ),
+  on(
+    createPostSuccess,
+    (state, { post }): PostsState => ({
+      ...state,
+      selectedPost: post,
+      loading: false,
+      posts: [...state.posts, post]
+    })
+  ),
+  on(
+    createPostFailure,
+    (state, { error }): PostsState => ({
+      ...state,
+      selectedPost: undefined,
+      loading: false,
+      error: error
     })
   )
 );
