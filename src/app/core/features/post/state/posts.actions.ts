@@ -1,7 +1,7 @@
+import { NewPost, Post } from '../models/Post';
 import { createAction, props } from '@ngrx/store';
 import { Answer } from '../models/Answer';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Post } from '../models/Post';
 import { PostsFilter } from '../models/Filter';
 
 export const enum PostActions {
@@ -17,7 +17,10 @@ export const enum PostActions {
   LOAD_ANSWERS_FOR_SELECTED_POST = '[Post List] Load Answers for selected Post',
   LOAD_ANSWERS_FOR_SELECTED_POST_SUCCESS = '[Post List] Load Answers for selected Post Success',
   LOAD_ANSWERS_FOR_SELECTED_POST_FAILURE = '[Post List] Load Answers for selected Post Failure',
-  SELECT_POST = '[Post List] Select Post'
+  SELECT_POST = '[Post List] Select Post',
+  CREATE_POST = '[New Post] Create Post',
+  CREATE_POST_SUCCESS = '[New Post] Create Post Success',
+  CREATE_POST_FAILURE = '[New Post] Create Post Failure'
 }
 
 export const loadPosts = createAction(PostActions.LOAD_POSTS_ACTION);
@@ -65,4 +68,19 @@ export const loadAnswerForPostFailure = createAction(
 export const selectPost = createAction(
   PostActions.SELECT_POST,
   props<{ post: Post }>()
+);
+
+export const createPost = createAction(
+  PostActions.CREATE_POST,
+  props<{ post: NewPost }>()
+);
+
+export const createPostSuccess = createAction(
+  PostActions.CREATE_POST_SUCCESS,
+  props<{ post: Post }>()
+);
+
+export const createPostFailure = createAction(
+  PostActions.CREATE_POST_FAILURE,
+  props<{ error: HttpErrorResponse }>()
 );

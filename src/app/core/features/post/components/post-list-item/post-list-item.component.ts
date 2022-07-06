@@ -16,6 +16,8 @@ export class PostListItemComponent {
   constructor(private router: Router, private store: Store) {}
 
   openPostDetails() {
+    if (!this.post.id) throw new Error('Post Id is not provided.');
+
     this.store.dispatch(selectPost({ post: this.post }));
     this.store.dispatch(loadAnswerForPost({ postId: this.post.id }));
     this.router.navigate([`/posts/${this.post.id}`]);

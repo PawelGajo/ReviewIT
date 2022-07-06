@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NewPost, PostCategory } from '../../models/Post';
 import { Observable, of } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { GIT_ICON } from '../../../../../../assets/icons/svg-icons';
 import { MatIconRegistry } from '@angular/material/icon';
-import { PostCategory } from '../../models/Post';
+import { Store } from '@ngrx/store';
+import { createPost } from '../../state/posts.actions';
 
 @Component({
   selector: 'app-post-form',
@@ -27,7 +29,8 @@ export class PostFormComponent implements OnInit {
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private store: Store
   ) {
     iconRegistry.addSvgIconLiteral(
       'git',
@@ -46,7 +49,8 @@ export class PostFormComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.postForm);
+    const post: NewPost = this.postForm.value;
+    this.store.dispatch(createPost({ post }));
   }
 
   ngOnInit(): void {

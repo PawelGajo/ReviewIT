@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import {
   clickButton,
   fillInput,
@@ -17,6 +18,7 @@ describe('PostFormComponent', () => {
   let component: PostFormComponent;
   let fixture: ComponentFixture<PostFormComponent>;
   let loader: HarnessLoader;
+  let store: MockStore;
 
   let fillForm = async () => {
     await fillInput(loader, 'post-title', 'test title value');
@@ -29,6 +31,7 @@ describe('PostFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [provideMockStore()],
       imports: [
         ReactiveFormsModule,
         MatSelectModule,
@@ -37,6 +40,8 @@ describe('PostFormComponent', () => {
       ],
       declarations: [PostFormComponent]
     }).compileComponents();
+
+    store = TestBed.inject(MockStore);
   });
 
   beforeEach(() => {
@@ -82,10 +87,13 @@ describe('PostFormComponent', () => {
   });
 
   it('should trigger submit function if form is valid', async () => {
-    spyOn(component, 'submit').and.returnValue();
+    spyOn(component, 'submit').and.callThrough();
+    spyOn(store, 'dispatch').and.callThrough();
+
     await fillForm();
     await clickButton(loader, 'post-submit-button');
     expect(component.postForm.valid).toBeTrue();
     expect(component.submit).toHaveBeenCalledTimes(1);
+    expect(store.dispatch).toHaveBeenCalledTimes(1);
   });
 });

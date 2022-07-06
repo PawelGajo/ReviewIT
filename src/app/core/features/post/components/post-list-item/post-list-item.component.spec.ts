@@ -117,7 +117,7 @@ describe('PostListItemComponent', () => {
     expect(component.openPostDetails).toHaveBeenCalledTimes(1);
     expect(store.dispatch).toHaveBeenCalledTimes(2);
     expect(store.dispatch).toHaveBeenCalledWith(
-      loadAnswerForPost({ postId: post.id })
+      loadAnswerForPost({ postId: post!.id! })
     );
     expect(store.dispatch).toHaveBeenCalledWith(selectPost({ post }));
   });
